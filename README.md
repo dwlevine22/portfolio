@@ -33,5 +33,14 @@ Then open http://localhost:8000. (The www redirect and security headers only app
 | A | @ | 216.239.32.21, 216.239.34.21, 216.239.36.21, 216.239.38.21 |
 | AAAA | @ | 2001:4860:4802:32::15, …:34::15, …:36::15, …:38::15 |
 | CNAME | www | ghs.googlehosted.com |
+| CNAME | gameday | ghs.googlehosted.com (Game Day, mapped from project `gameday-514004`) |
 
 Each future project gets its own `CNAME <name> → ghs.googlehosted.com` plus a Cloud Run domain mapping.
+
+### Cloudflare account move (Wed 2026-11-11)
+Records do not carry over. Before the move, Export the zone from the current account; after, Import
+it into the new one with "Proxy imported DNS records" UNCHECKED. Then confirm in the new account that
+every row above is present and grey, especially the verification TXT and the gameday CNAME.
+
+The CSP and other headers in `nginx.conf` apply only to pages served by this site, never to
+subdomains such as gameday.davidlevine.dev.
