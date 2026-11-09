@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>davidlevine.dev</title>
+  <!-- PLACEHOLDER: one sentence about you, shown under the link in search results. -->
+  <meta name="description" content="Developer portfolio and projects.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">davidlevine.dev</a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ INTRO ============ -->
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow">UX designer &amp; developer</p>
+        <!-- PLACEHOLDER: replace the text inside the h1 with your name and remove class="placeholder". -->
+        <h1 id="hero-title"><span class="placeholder">Your name</span></h1>
+        <!-- PLACEHOLDER: one or two sentences about what you design and build. -->
+        <p class="lede"><span class="placeholder">A one- or two-sentence introduction: what you design and build, and what you care about.</span></p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">See my projects</a>
+          <a class="button button-quiet" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <!-- PLACEHOLDER: replace this box with
+           <img class="portrait" src="/images/portrait.jpg" alt="Portrait of [your name]" width="320" height="320">
+           (put the photo in public/images/). -->
+      <div class="portrait placeholder-box" role="img" aria-label="Placeholder for your photo">
+        <span>Your photo<br><small>square, at least 640 × 640</small></span>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section wrap" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+
+      <ul class="project-list">
+        <li class="project-card">
+          <!-- PLACEHOLDER: replace this box with
+               <img src="/images/gameday.png" alt="Game Day's map of nearby bars showing a game" width="1200" height="750">
+               (put the screenshot in public/images/). -->
+          <div class="project-media placeholder-box" role="img" aria-label="Placeholder for a Game Day screenshot">
+            <span>Game Day screenshot<br><small>16:10, at least 1200 × 750</small></span>
+          </div>
+          <div class="project-body">
+            <h3>Game Day</h3>
+            <p>Find where fellow fans are watching the game. Pick your team, see nearby bars showing the matchup on a map, check in, and read reviews from other fans.</p>
+            <ul class="tags" aria-label="Built with">
+              <li>Next.js</li>
+              <li>Firestore</li>
+              <li>Passkeys</li>
+              <li>Claude AI moderation</li>
+              <li>Google Cloud Run</li>
+            </ul>
+            <a class="button" href="https://gameday-2iuwhgbk4a-uc.a.run.app/#venues" target="_blank" rel="noopener">
+              Open Game Day
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="visually-hidden">(opens in a new tab)</span>
+            </a>
+          </div>
+        </li>
+
+        <!-- PLACEHOLDER: a slot for your next project. Copy the Game Day card above to add one,
+             or delete this card if you don't want an empty slot showing. -->
+        <li class="project-card project-card-empty">
+          <div class="project-media placeholder-box" role="img" aria-label="Placeholder for a project image">
+            <span>Next project</span>
+          </div>
+          <div class="project-body">
+            <h3><span class="placeholder">Project name</span></h3>
+            <p><span class="placeholder">What it does and who it's for, in one or two sentences.</span></p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section wrap" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="about-grid">
+        <div class="prose">
+          <!-- PLACEHOLDER: your bio, two or three short paragraphs. -->
+          <p><span class="placeholder">Bio, paragraph one: your background and how you got into design and development.</span></p>
+          <p><span class="placeholder">Bio, paragraph two: what you're working on and learning now.</span></p>
+        </div>
+        <div>
+          <h3 class="small-heading">Skills &amp; tools</h3>
+          <!-- PLACEHOLDER: replace each item with a skill or tool. -->
+          <ul class="tags">
+            <li class="placeholder">Skill</li>
+            <li class="placeholder">Skill</li>
+            <li class="placeholder">Tool</li>
+            <li class="placeholder">Tool</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section wrap" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <!-- PLACEHOLDER: turn each item into a link once you have it, for example
+           <li><a href="mailto:you@example.com">Email</a></li>
+           <li><a href="https://github.com/your-name">GitHub</a></li>
+           <li><a href="https://www.linkedin.com/in/your-name">LinkedIn</a></li>
+           <li><a href="/resume.pdf">Résumé (PDF)</a></li>   (put the PDF in public/) -->
+      <ul class="contact-list">
+        <li class="placeholder">Email</li>
+        <li class="placeholder">GitHub</li>
+        <li class="placeholder">LinkedIn</li>
+        <li class="placeholder">Résumé (PDF)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <!-- PLACEHOLDER: your name after the year. -->
+      <p>© 2026 <span class="placeholder">Your name</span></p>
+    </div>
+  </footer>
+</body>
+</html>

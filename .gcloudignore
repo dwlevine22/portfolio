@@ -1,0 +1,7 @@
+# Only the website itself is uploaded to Google's build service.
+.git
+.gitignore
+.claude
+deploy
+*.md
+.DS_Store
