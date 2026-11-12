@@ -116,7 +116,7 @@ p { margin: 0 0 1em; }
 .icon { flex: none; }
 
 /* ---- Sections ---- */
-.section { padding-block: 56px; border-top: 1px solid var(--border); }
+.section { padding-block: 56px; border-top: 1px solid var(--border); scroll-margin-top: 64px; } /* menu links land below the sticky header */
 
 /* ---- Projects ---- */
 .project-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 28px; }
@@ -127,6 +127,13 @@ p { margin: 0 0 1em; }
   overflow: hidden;
 }
 .project-media { aspect-ratio: 16 / 10; width: 100%; border-radius: 0; border-width: 0 0 2px; }
+img.project-media { height: auto; object-fit: cover; object-position: top left; border-bottom: 1px solid var(--border); }
+.coming-soon {
+  display: grid; place-content: center; justify-items: center; gap: 10px;
+  background: var(--bg); color: var(--muted);
+  border-bottom: 1px dashed var(--border);
+}
+.coming-soon p { margin: 0; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.02em; }
 .project-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 .project-body p { color: var(--muted); }
 .project-body .button { align-self: flex-start; margin-top: auto; }

@@ -46,12 +46,9 @@
 
       <ul class="project-list">
         <li class="project-card">
-          <!-- PLACEHOLDER: replace this box with
-               <img src="/images/gameday.png" alt="Game Day's map of nearby bars showing a game" width="1200" height="750">
-               (put the screenshot in public/images/). -->
-          <div class="project-media placeholder-box" role="img" aria-label="Placeholder for a Game Day screenshot">
-            <span>Game Day screenshot<br><small>16:10, at least 1200 × 750</small></span>
-          </div>
+          <img class="project-media" src="/images/gameday.jpg" width="1280" height="800" loading="lazy"
+               alt="Game Day's &quot;Where the fans are&quot; screen: a list of nearby bars with ratings beside a map of Somerville, MA with each bar pinned">
+
           <div class="project-body">
             <h3>Game Day</h3>
             <p>Find where fellow fans are watching the game. Pick your team, see nearby bars showing the matchup on a map, check in, and read reviews from other fans.</p>
@@ -73,8 +70,18 @@
         <!-- PLACEHOLDER: a slot for your next project. Copy the Game Day card above to add one,
              or delete this card if you don't want an empty slot showing. -->
         <li class="project-card project-card-empty">
-          <div class="project-media placeholder-box" role="img" aria-label="Placeholder for a project image">
-            <span>Next project</span>
+          <div class="project-media coming-soon">
+            <svg aria-hidden="true" viewBox="0 0 64 64" width="64" height="64">
+              <!-- construction barrier -->
+              <rect x="6" y="18" width="52" height="16" rx="2" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M14 18l-8 8M26 18L10 34M38 18L22 34M50 18L34 34M58 22L46 34" stroke="currentColor" stroke-width="5" stroke-linecap="square" clip-path="url(#barrier-clip)"/>
+              <clipPath id="barrier-clip"><rect x="6" y="18" width="52" height="16" rx="2"/></clipPath>
+              <path d="M14 34v22M50 34v22M8 56h12M44 56h12" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M14 18v-6M50 18v-6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="14" cy="9" r="3.5" fill="currentColor"/>
+              <circle cx="50" cy="9" r="3.5" fill="currentColor"/>
+            </svg>
+            <p>Coming Soon</p>
           </div>
           <div class="project-body">
             <h3><span class="placeholder">Project name</span></h3>
