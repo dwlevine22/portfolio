@@ -1,0 +1,20 @@
+; DNS records for davidlevine.dev, ready for Cloudflare's DNS -> Records -> Import.
+; When importing, leave "Proxy imported DNS records" UNCHECKED: every record must be DNS only (grey cloud).
+; TTL 1 means "Auto" in Cloudflare.
+
+; Google ownership verification (Search Console). Google keeps re-checking it, so never delete it.
+davidlevine.dev.          1  IN  TXT    "google-site-verification=sgUnObWHih8SfXHdVoWBBa6Gscxex8M2pPUHBG0xqMQ"
+
+; Portfolio on Cloud Run (project davidlevine-site)
+davidlevine.dev.          1  IN  A      216.239.32.21
+davidlevine.dev.          1  IN  A      216.239.34.21
+davidlevine.dev.          1  IN  A      216.239.36.21
+davidlevine.dev.          1  IN  A      216.239.38.21
+davidlevine.dev.          1  IN  AAAA   2001:4860:4802:32::15
+davidlevine.dev.          1  IN  AAAA   2001:4860:4802:34::15
+davidlevine.dev.          1  IN  AAAA   2001:4860:4802:36::15
+davidlevine.dev.          1  IN  AAAA   2001:4860:4802:38::15
+www.davidlevine.dev.      1  IN  CNAME  ghs.googlehosted.com.
+
+; Game Day on Cloud Run (project gameday-514004)
+gameday.davidlevine.dev.  1  IN  CNAME  ghs.googlehosted.com.
