@@ -19,8 +19,8 @@ SERVICE=portfolio
 DOMAINS="davidlevine.dev www.davidlevine.dev"
 
 # Domain mappings are a "beta" command, which needs an extra gcloud component.
-# (Checked with prompts turned off: a plain `gcloud beta` would silently wait for a Y/n answer.)
-if ! CLOUDSDK_CORE_DISABLE_PROMPTS=1 gcloud beta --help >/dev/null 2>&1; then
+# (Checked via the component list: a plain `gcloud beta` would silently wait for a Y/n answer.)
+if [ -z "$(CLOUDSDK_CORE_DISABLE_PROMPTS=1 gcloud components list --only-local-state --filter='id=beta' --format='value(id)' 2>/dev/null)" ]; then
   echo "Installing the gcloud 'beta' component (one time, takes a minute)…"
   gcloud components install beta --quiet
 fi
