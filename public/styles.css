@@ -143,6 +143,7 @@ p { margin: 0 0 1em; }
 .about-grid { display: grid; gap: 32px; }
 @media (min-width: 800px) { .about-grid { grid-template-columns: 1.6fr 1fr; gap: 56px; } }
 .prose { max-width: 62ch; }
+.bio-greeting { font-size: 1.25rem; font-weight: 600; }
 .small-heading { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
 /* ---- Contact ---- */
