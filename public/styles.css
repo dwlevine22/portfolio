@@ -161,7 +161,11 @@ img.project-media { height: auto; object-fit: cover; object-position: top left; 
   border: 2px solid var(--border); border-radius: 999px; text-decoration: none;
 }
 .contact-list a:hover { border-color: var(--accent); }
-.contact-list li.placeholder { padding: 10px 18px; border-radius: 999px; }
+/* A contact link that still has its PASTE-…-HERE address shows as a placeholder. */
+.contact-list a[href*="PASTE-"] {
+  background: var(--ph-bg); color: var(--ph-text);
+  border: 2px dashed var(--ph-border);
+}
 
 /* ---- Footer ---- */
 .site-footer { border-top: 1px solid var(--border); padding-block: 32px; color: var(--muted); font-size: 0.95rem; }
