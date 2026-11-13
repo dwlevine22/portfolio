@@ -129,11 +129,11 @@ p { margin: 0 0 1em; }
 .project-media { aspect-ratio: 16 / 10; width: 100%; border-radius: 0; border-width: 0 0 2px; }
 img.project-media { height: auto; object-fit: cover; object-position: top left; border-bottom: 1px solid var(--border); }
 .coming-soon {
-  display: grid; place-content: center; justify-items: center; gap: 10px;
+  display: grid; place-content: center; justify-items: center;
   background: var(--bg); color: var(--muted);
   border-bottom: 1px dashed var(--border);
 }
-.coming-soon p { margin: 0; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.02em; }
+.coming-soon svg { width: clamp(96px, 30%, 128px); height: auto; }
 .project-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 .project-body p { color: var(--muted); }
 .project-body .button { align-self: flex-start; margin-top: auto; }
