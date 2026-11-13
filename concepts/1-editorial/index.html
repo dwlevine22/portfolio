@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept 1 · Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f1e7; --paper-2: #efe7d8; --ink: #1f1a14; --soft: #5c5247;
+    --rule: #d9cfbd; --accent: #a8401c; --accent-2: #7a2e13;
+    --serif: "Fraunces", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.65 var(--sans); }
+  a { color: var(--accent); text-underline-offset: .2em; }
+  a:hover { color: var(--accent-2); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  img { display: block; max-width: 100%; height: auto; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  @media (min-width: 720px) { .wrap { padding: 0 40px; } }
+
+  /* Masthead */
+  .masthead { border-bottom: 1px solid var(--ink); }
+  .masthead .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 18px; }
+  .wordmark { font: 600 1.35rem/1 var(--serif); font-variation-settings: "opsz" 144; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+  .masthead nav { display: flex; gap: 22px; font-size: .95rem; }
+  .masthead nav a { color: var(--ink); text-decoration: none; padding: 8px 0; }
+  .masthead nav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero { display: grid; gap: 40px; padding-block: 64px 72px; align-items: end; }
+  @media (min-width: 860px) { .hero { grid-template-columns: 1.5fr 1fr; padding-block: 96px 96px; } }
+  .kicker { font: 500 .8rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 22px; }
+  h1 { font: 350 clamp(2.8rem, 7.5vw, 5.6rem)/1.02 var(--serif); font-variation-settings: "opsz" 144; letter-spacing: -.035em; margin: 0; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-side { border-top: 1px solid var(--ink); padding-top: 18px; }
+  .hero-side img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 20%; filter: grayscale(.25) contrast(1.02); }
+  .caption { font-size: .85rem; color: var(--soft); margin: 10px 0 0; }
+
+  /* Sections */
+  section { border-top: 1px solid var(--ink); padding-block: 56px 72px; }
+  .sec-head { display: grid; gap: 8px; margin-bottom: 36px; }
+  @media (min-width: 860px) { .sec-head { grid-template-columns: 1fr 2fr; } }
+  .sec-num { font: italic 400 1rem var(--serif); color: var(--accent); }
+  h2 { font: 400 clamp(2rem, 4vw, 3rem)/1.05 var(--serif); letter-spacing: -.02em; margin: 0; }
+
+  /* Projects as a numbered index */
+  .index { list-style: none; margin: 0; padding: 0; }
+  .entry { display: grid; gap: 24px; padding-block: 32px; border-top: 1px solid var(--rule); }
+  .entry:first-child { border-top: 0; padding-top: 0; }
+  @media (min-width: 860px) { .entry { grid-template-columns: 1fr 2fr; gap: 48px; } }
+  .entry h3 { font: 500 2rem/1.1 var(--serif); margin: 0 0 6px; letter-spacing: -.015em; }
+  .entry .meta { font-size: .85rem; color: var(--soft); letter-spacing: .04em; text-transform: uppercase; }
+  .entry p { color: var(--soft); max-width: 52ch; }
+  .shot { border: 1px solid var(--ink); background: var(--paper-2); }
+  .readmore { display: inline-flex; gap: 8px; align-items: center; font-weight: 600; text-decoration: none; border-bottom: 2px solid currentColor; padding: 6px 0; }
+  .soon { display: grid; place-items: center; aspect-ratio: 16/10; border: 1px dashed var(--soft); color: var(--soft); font: italic 300 1.6rem var(--serif); }
+
+  /* About */
+  .about { display: grid; gap: 40px; }
+  @media (min-width: 860px) { .about { grid-template-columns: 1fr 2fr; gap: 48px; } }
+  .pull { font: italic 300 clamp(1.5rem, 2.6vw, 2rem)/1.3 var(--serif); margin: 0 0 24px; }
+  .prose p { max-width: 62ch; }
+  .dropcap::first-letter { float: left; font: 400 4.2rem/.8 var(--serif); padding: 6px 10px 0 0; color: var(--accent); }
+  dl { margin: 0; }
+  dt { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); margin: 0 0 6px; }
+  dd { margin: 0 0 24px; font: 400 1.15rem/1.6 var(--serif); }
+
+  /* Contact */
+  .contact-big { font: 350 clamp(2rem, 5vw, 3.6rem)/1.1 var(--serif); letter-spacing: -.02em; margin: 0 0 28px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px 28px; list-style: none; padding: 0; margin: 0; font-weight: 600; }
+  .links a { display: inline-block; padding: 8px 0; }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  footer { border-top: 1px solid var(--ink); padding-block: 24px; font-size: .85rem; color: var(--soft); }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <a class="wordmark" href="#">David Levine</a>
+      <nav aria-label="Main"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <p class="kicker">UX/UI Designer · Purdue University, UX Design</p>
+        <h1>Designing for people's <em>everyday</em> problems.</h1>
+      </div>
+      <div class="hero-side">
+        <img src="../../public/images/headshot.jpg" alt="David Levine" width="640" height="640">
+        <p class="caption">David Levine, designer &amp; builder.</p>
+      </div>
+    </div>
+
+    <section id="work" aria-labelledby="work-h">
+      <div class="sec-head"><span class="sec-num">No. 01</span><h2 id="work-h">Selected work</h2></div>
+      <ol class="index">
+        <li class="entry">
+          <div>
+            <p class="meta">2026 · Web app</p>
+            <h3>Game Day</h3>
+            <p>Find where fellow fans are watching the game. Pick your team, see nearby bars showing the matchup on a map, check in, and read reviews from other fans.</p>
+            <a class="readmore" href="https://gameday-2iuwhgbk4a-uc.a.run.app/#venues" target="_blank" rel="noopener">Open Game Day →<span class="vh"> (opens in a new tab)</span></a>
+          </div>
+          <img class="shot" src="../../public/images/gameday.jpg" width="1280" height="800" loading="lazy" alt="Game Day's list of nearby bars beside a map">
+        </li>
+        <li class="entry">
+          <div>
+            <p class="meta">In progress</p>
+            <h3>Coming soon</h3>
+            <p>Claude and I have more projects on the way!</p>
+          </div>
+          <div class="soon" aria-hidden="true">Next chapter…</div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="about" aria-labelledby="about-h">
+      <div class="sec-head"><span class="sec-num">No. 02</span><h2 id="about-h">About</h2></div>
+      <div class="about">
+        <dl>
+          <dt>Skills</dt><dd>UX/UI Design, UX Research, Usability Testing, Accessibility (WCAG 2.1), Agile Methodologies, Agentic Software Engineering</dd>
+          <dt>Tools</dt><dd>Figma, Claude Code, Miro, Photoshop</dd>
+        </dl>
+        <div class="prose">
+          <p class="pull">Hello! I'm David, nice to meet you!</p>
+          <p class="dropcap">I am a UX/UI designer who recently graduated from Purdue University with a bachelor's degree in UX Design. I am bringing with me three years of experience working in cross-functional teams with real clients through multiple university projects.</p>
+          <p>As a designer, I strive to do more than make products look good. I ensure they make sense to people. I believe combining aesthetics with functionality and accessibility creates experiences people can trust and enjoy. I am currently adapting AI and using it to quickly build solutions that I can deploy myself, which you'll find in this portfolio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <div class="sec-head"><span class="sec-num">No. 03</span><h2 id="contact-h">Contact</h2></div>
+      <p class="contact-big">Let's make something that makes sense to people.</p>
+      <ul class="links">
+        <li><a href="mailto:dwlevine22@gmail.com">Email</a></li>
+        <li><a href="https://github.com/dwlevine22" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/davidwlevine/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://drive.google.com/file/d/1WdOb0dCheoO40RHfO2dALUa9t2qTbsix/view?usp=sharing" target="_blank" rel="noopener">Résumé (PDF)</a></li>
+      </ul>
+    </section>
+  </main>
+  <footer><div class="wrap">© 2026 David Levine</div></footer>
+</body>
+</html>
