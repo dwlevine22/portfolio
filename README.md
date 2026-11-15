@@ -1,22 +1,28 @@
 # davidlevine.dev
 
-My developer portfolio. A plain HTML/CSS site served by nginx on Google Cloud Run
+My developer portfolio. A plain HTML/CSS site (plus one small script) served by nginx on Google Cloud Run
 (project `davidlevine-site`, region `us-central1`, service `portfolio`).
 
 ## Folders
-- `public/`: the website itself. Edit `index.html` and `styles.css`; put photos, screenshots and a résumé PDF in `public/images/` or `public/`.
-- `nginx.conf`: web server settings (www → davidlevine.dev redirect, security headers, caching).
-- `Dockerfile`: how Google packages the site.
-- `deploy/`: scripts to put it online.
+- `public/`: the website itself.
+  - Pages: `index.html` (Home), `projects.html`, `about.html`, `projects/game-day.html` (case study), `404.html`.
+    Addresses are clean: `/projects` serves `projects.html`.
+  - `styles.css`: all styles, including the animations (they switch off for people who turn on Reduce motion).
+  - `case-study-nav.js`: the case study's section timeline (highlights the current section; on phones the strip follows along).
+  - `fonts/`: Space Grotesk and JetBrains Mono, served from this site (SIL Open Font License, texts included).
+  - `images/`: headshot and screenshots; `images/game-day/` holds the case study's screenshots.
+- `concepts/`: the four design concepts the site was chosen from (drafts, never deployed).
+- `nginx.conf`: web server settings (www → davidlevine.dev redirect, clean addresses, security headers, caching).
+  The security policy only lets the site load its own files; that's why fonts are stored here, not on Google Fonts.
+- `Dockerfile`: how Google packages the site (only `public/` and `nginx.conf` go in).
+- `deploy/`: scripts to preview and put it online.
 
-## Filling in the placeholders
-Everything still to fill in is marked `PLACEHOLDER` in a comment in `public/index.html`
-and shows on the page as a dashed, amber box. When you replace one, remove its `placeholder` class
-(or the whole placeholder box) as the comment describes.
+## Still to fill in
+- The "What I learned" box at the end of `public/projects/game-day.html` (dashed mint box).
 
 ## Preview on this Mac
 ```
-cd public && python3 -m http.server 8000
+bash deploy/preview.sh
 ```
 Then open http://localhost:8000. (The www redirect and security headers only apply on Cloud Run.)
 
