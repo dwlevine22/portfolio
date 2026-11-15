@@ -108,9 +108,6 @@ footer ul { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin:
 .facts div { border-top: 1px solid var(--line-hi); padding-top: 12px; }
 .facts dt { font: 500 .78rem var(--mono); color: var(--mint); margin-bottom: 4px; }
 .facts dd { margin: 0; color: var(--text); }
-.toc { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 36px 0 0; }
-.toc a { display: inline-block; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); color: var(--soft); text-decoration: none; font: 400 .8rem var(--mono); transition: color .15s, border-color .15s; }
-.toc a:hover { color: var(--mint); border-color: var(--mint); }
 
 .chapter { padding-block: 64px; border-top: 1px solid var(--line); scroll-margin-top: 72px; }
 .chapter:first-of-type { margin-top: 56px; }
@@ -220,7 +217,7 @@ main { view-transition-name: page; }
 .panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: scale(1.015); border-color: var(--line-hi); }
 .tags li { transition: border-color .2s, color .2s; }
 .tags li:hover { border-color: var(--mint); color: var(--mint); }
-footer a, .crumb, .toc a { transition: color .2s var(--ease), border-color .2s var(--ease); }
+footer a, .crumb { transition: color .2s var(--ease), border-color .2s var(--ease); }
 /* Text links get an underline that draws in from the left. */
 footer a, .crumb { position: relative; text-decoration: none; }
 footer a::after, .crumb::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
@@ -231,7 +228,8 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   @view-transition { navigation: none; }
-  *, *::before, *::after, ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
+  /* The section timeline's highlight follows the scroll position; it's information, not decoration, so it stays. */
+  *:not(.cs-nav a), *:not(.cs-nav a)::before, *::after, ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
     animation: none !important; transition: none !important;
   }
   .card:hover, .steps li:hover, .panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: none; }
@@ -258,3 +256,75 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
   @keyframes to-top-in { from { opacity: 0; translate: 0 16px; scale: .9; visibility: hidden; } to { opacity: 1; translate: 0 0; scale: 1; visibility: visible; } }
 }
 @media (prefers-reduced-motion: reduce) { .to-top { animation: none !important; } }
+
+/* ---- Case study section timeline ----
+   Wide screens: a vertical timeline in a left column that stays in view while you read.
+   Narrower screens: the same numbered steps in a strip pinned under the header.
+   Dots fill in mint as you pass each section; the section you're reading is highlighted
+   (in browsers with scroll-driven animations; elsewhere it's a plain, working list). */
+.cs-nav ol { list-style: none; margin: 0; padding: 0; position: relative; }
+.cs-nav a { position: relative; display: flex; align-items: baseline; gap: 10px; color: var(--soft); text-decoration: none; transition: color .2s var(--ease); }
+.cs-nav a:hover { color: var(--mint); }
+.cs-nav .n { font: 500 .74rem var(--mono); color: inherit; opacity: .7; }
+.cs-nav .t { font-weight: 500; }
+.cs-nav a::before { content: ""; position: absolute; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line-hi); box-sizing: border-box; transition: transform .2s var(--ease); }
+.cs-nav a:hover::before { border-color: var(--mint); }
+
+@media (min-width: 1100px) {
+  .cs-body { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 56px; }
+  .cs-nav { position: sticky; top: 104px; align-self: start; margin-top: 64px; }
+  .cs-nav ol { padding-left: 26px; }
+  .cs-nav ol::before { content: ""; position: absolute; left: 5px; top: 14px; bottom: 14px; width: 1px; background: var(--line-hi); }
+  .cs-nav li a { padding: 7px 0; flex-direction: column; gap: 0; line-height: 1.3; }
+  .cs-nav a::before { left: -26px; top: 12px; }
+}
+@media (max-width: 1099px) {
+  .cs-nav { position: sticky; top: 64px; z-index: 4; margin: 24px -20px 0; padding: 0 20px; background: rgba(13,14,19,.88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; }
+  .cs-nav::-webkit-scrollbar { display: none; }
+  .cs-nav ol { display: flex; width: max-content; }
+  .cs-nav li { position: relative; }
+  .cs-nav li + li::after { content: ""; position: absolute; left: -9px; top: 50%; width: 18px; height: 1px; background: var(--line-hi); }
+  .cs-nav li a { padding: 14px 14px 14px 30px; white-space: nowrap; font-size: .92rem; }
+  .cs-nav a::before { left: 12px; top: 50%; margin-top: -5.5px; }
+  .chapter { scroll-margin-top: 128px; }
+}
+@media (min-width: 720px) and (max-width: 1099px) { .cs-nav { margin-inline: -36px; padding-inline: 36px; } }
+
+@supports (animation-timeline: view()) {
+  .cs-body { timeline-scope: --s-problem, --s-approach, --s-assumptions, --s-principles, --s-evaluation, --s-iteration, --s-accessibility, --s-outcome, --s-next; }
+  #problem { view-timeline-name: --s-problem; }
+  .cs-nav li:nth-child(1) a { animation-timeline: --s-problem; }
+  .cs-nav li:nth-child(1) a::before { animation-timeline: --s-problem, --s-problem; }
+  #approach { view-timeline-name: --s-approach; }
+  .cs-nav li:nth-child(2) a { animation-timeline: --s-approach; }
+  .cs-nav li:nth-child(2) a::before { animation-timeline: --s-approach, --s-approach; }
+  #assumptions { view-timeline-name: --s-assumptions; }
+  .cs-nav li:nth-child(3) a { animation-timeline: --s-assumptions; }
+  .cs-nav li:nth-child(3) a::before { animation-timeline: --s-assumptions, --s-assumptions; }
+  #principles { view-timeline-name: --s-principles; }
+  .cs-nav li:nth-child(4) a { animation-timeline: --s-principles; }
+  .cs-nav li:nth-child(4) a::before { animation-timeline: --s-principles, --s-principles; }
+  #evaluation { view-timeline-name: --s-evaluation; }
+  .cs-nav li:nth-child(5) a { animation-timeline: --s-evaluation; }
+  .cs-nav li:nth-child(5) a::before { animation-timeline: --s-evaluation, --s-evaluation; }
+  #iteration { view-timeline-name: --s-iteration; }
+  .cs-nav li:nth-child(6) a { animation-timeline: --s-iteration; }
+  .cs-nav li:nth-child(6) a::before { animation-timeline: --s-iteration, --s-iteration; }
+  #accessibility { view-timeline-name: --s-accessibility; }
+  .cs-nav li:nth-child(7) a { animation-timeline: --s-accessibility; }
+  .cs-nav li:nth-child(7) a::before { animation-timeline: --s-accessibility, --s-accessibility; }
+  #outcome { view-timeline-name: --s-outcome; }
+  .cs-nav li:nth-child(8) a { animation-timeline: --s-outcome; }
+  .cs-nav li:nth-child(8) a::before { animation-timeline: --s-outcome, --s-outcome; }
+  #next { view-timeline-name: --s-next; }
+  .cs-nav li:nth-child(9) a { animation-timeline: --s-next; }
+  .cs-nav li:nth-child(9) a::before { animation-timeline: --s-next, --s-next; }
+  /* Highlight while the section crosses the middle of the screen. */
+  .cs-nav a { animation: nav-on linear none; animation-range: cover 50vh cover calc(100% - 50vh); }
+  /* Dot: fills mint once you reach the section (and stays filled), and grows while you're in it. */
+  .cs-nav a::before { animation: dot-done linear both, dot-on linear none; animation-range: cover 50vh cover calc(50vh + 1px), cover 50vh cover calc(100% - 50vh); }
+}
+@keyframes nav-on { from, to { color: var(--text); } }
+@keyframes dot-done { from { background: var(--bg); border-color: var(--line-hi); } to { background: var(--mint); border-color: var(--mint); } }
+@keyframes dot-on { from, to { scale: 1.35; box-shadow: 0 0 0 4px rgba(110,231,183,.2); } }
+@media (prefers-reduced-motion: reduce) { .cs-nav a, .cs-nav a::before { transition: none; } }
