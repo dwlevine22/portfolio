@@ -236,3 +236,25 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
   }
   .card:hover, .steps li:hover, .panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: none; }
 }
+
+/* ---- Back to top (case studies) ----
+   A mint circle in the bottom-right corner. Where scroll-driven animation is supported it fades
+   and rises in once you've scrolled down a little; elsewhere it's simply always there. */
+.to-top {
+  position: fixed; right: 24px; bottom: 24px; z-index: 6;
+  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--mint); color: var(--on-mint); border: 1px solid var(--mint);
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease);
+}
+.to-top svg { transition: transform .25s var(--ease); }
+.to-top:hover { color: var(--on-mint); background: var(--mint-hi); border-color: var(--mint-hi); transform: translate(-3px, -3px); box-shadow: 4px 4px 0 var(--text); }
+.to-top:hover svg { transform: translateY(-3px); }
+.to-top:active { transform: none; box-shadow: none; transition-duration: .06s; }
+.to-top:focus-visible { outline-offset: 4px; border-radius: 50%; }
+@media (max-width: 719px) { .to-top { right: 16px; bottom: 16px; width: 48px; height: 48px; } }
+@supports (animation-timeline: scroll()) {
+  .to-top { animation: to-top-in linear both; animation-timeline: scroll(root); animation-range: 300px 500px; }
+  @keyframes to-top-in { from { opacity: 0; translate: 0 16px; scale: .9; visibility: hidden; } to { opacity: 1; translate: 0 0; scale: 1; visibility: visible; } }
+}
+@media (prefers-reduced-motion: reduce) { .to-top { animation: none !important; } }
