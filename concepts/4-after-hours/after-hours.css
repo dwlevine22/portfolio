@@ -168,3 +168,71 @@ figcaption { font: 400 .8rem/1.5 var(--mono); color: var(--soft); margin-top: 10
 .card-btns { margin-top: auto; padding-top: 6px; }
 .panel.feature .text .card-btns { margin-top: 14px; }
 .card-btns .btn { margin-top: 0 !important; }
+
+/* =====================================================================
+   Motion: everything eases in, nothing jumps. CSS only, no scripts.
+   Every effect switches off for people who have turned on Reduce motion.
+   ===================================================================== */
+:root { --ease: cubic-bezier(.2, .7, .2, 1); --ease-in-out: cubic-bezier(.65, 0, .35, 1); }
+html { scroll-behavior: smooth; }
+
+/* 1 · Page to page: the new page cross-fades in and rises slightly; the header stays put,
+      and the highlighted menu item slides over to the new page's item. */
+@view-transition { navigation: auto; }
+.top { view-transition-name: site-header; }
+.top nav a[aria-current="page"] { view-transition-name: nav-current; }
+main { view-transition-name: page; }
+::view-transition-group(nav-current) { animation-duration: .45s; animation-timing-function: var(--ease-in-out); }
+::view-transition-old(page) { animation: page-out .22s var(--ease-in-out) both; }
+::view-transition-new(page) { animation: page-in .45s var(--ease) both; }
+@keyframes page-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes page-in { from { opacity: 0; transform: translateY(14px); } }
+
+/* 2 · First look: the top of each page arrives in a short, staggered sequence. */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero > *, .page-head > *, .cs-head > * { animation: rise .7s var(--ease) both; }
+.hero > :nth-child(2), .page-head > :nth-child(2), .cs-head > :nth-child(2) { animation-delay: .08s; }
+.hero > :nth-child(3), .page-head > :nth-child(3), .cs-head > :nth-child(3) { animation-delay: .16s; }
+.hero > :nth-child(4), .page-head > :nth-child(4), .cs-head > :nth-child(4) { animation-delay: .24s; }
+.hero > :nth-child(n+5), .page-head > :nth-child(n+5), .cs-head > :nth-child(n+5) { animation-delay: .32s; }
+.hero + .grid > *, .page-head + .grid > *, .page-head + .about > *, .cs-hero { animation: rise .8s var(--ease) .3s both; }
+.page-head + .grid > :nth-child(2), .page-head + .about > :nth-child(2) { animation-delay: .4s; }
+.status i { animation: breathe 2.8s ease-in-out infinite; }
+@keyframes breathe { 50% { box-shadow: 0 0 0 5px rgba(110,231,183,.18); } }
+
+/* 3 · Scrolling: sections and cards fade up as they come into view (browsers that support
+      scroll-driven animations; elsewhere they simply appear, so nothing is ever hidden). */
+@supports (animation-timeline: view()) {
+  .chapter > *, .concept, .steps li, .cards .card, .stats .stat, .shots figure, .phones img, .next-up,
+  .grid.two > .panel {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+}
+
+/* 4 · Hover and focus: small, consistent responses. */
+.panel, .card, .concept, .steps li { transition: border-color .25s var(--ease), transform .35s var(--ease), background .25s var(--ease); }
+.card:hover, .steps li:hover { border-color: var(--line-hi); transform: translateY(-3px); }
+.concept:hover { border-color: var(--line-hi); }
+.concept.final:hover { border-color: var(--mint-hi); }
+.panel .shot, .concept figure img, .shots img { transition: transform .6s var(--ease), border-color .3s var(--ease); }
+.panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: scale(1.015); border-color: var(--line-hi); }
+.tags li { transition: border-color .2s, color .2s; }
+.tags li:hover { border-color: var(--mint); color: var(--mint); }
+footer a, .crumb, .toc a { transition: color .2s var(--ease), border-color .2s var(--ease); }
+/* Text links get an underline that draws in from the left. */
+footer a, .crumb { position: relative; text-decoration: none; }
+footer a::after, .crumb::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { transform: scaleX(1); }
+:focus-visible { transition: outline-offset .15s var(--ease); }
+.btn:active { transition-duration: .06s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  @view-transition { navigation: none; }
+  *, *::before, *::after, ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
+    animation: none !important; transition: none !important;
+  }
+  .card:hover, .steps li:hover, .panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: none; }
+}
