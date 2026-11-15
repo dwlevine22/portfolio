@@ -328,3 +328,7 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
 @keyframes dot-done { from { background: var(--bg); border-color: var(--line-hi); } to { background: var(--mint); border-color: var(--mint); } }
 @keyframes dot-on { from, to { scale: 1.35; box-shadow: 0 0 0 4px rgba(110,231,183,.2); } }
 @media (prefers-reduced-motion: reduce) { .cs-nav a, .cs-nav a::before { transition: none; } }
+
+/* Set by case-study-nav.js: the same highlight in browsers without scroll-driven animations (e.g. Firefox). */
+.cs-nav a[aria-current="location"] { color: var(--text); }
+.cs-nav a[aria-current="location"]::before { background: var(--mint); border-color: var(--mint); scale: 1.35; box-shadow: 0 0 0 4px rgba(110,231,183,.2); }
