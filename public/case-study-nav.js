@@ -28,10 +28,19 @@
   nav.addEventListener("focusin", (e) => { focused = e.target.matches(":focus-visible"); });
   nav.addEventListener("focusout", () => { focused = false; });
 
+  // Center the visible step (dot, number and name) in the strip. Near either end the strip can't scroll
+  // any further, so the step simply sits as close to the middle as the ends allow.
   function bringIntoView(link) {
     if (!narrow.matches || busy()) return;
-    const target = link.parentElement.offsetLeft - (nav.clientWidth - link.parentElement.offsetWidth) / 2;
-    nav.scrollTo({ left: Math.max(0, target), behavior: reduceMotion.matches ? "auto" : "smooth" });
+    const navBox = nav.getBoundingClientRect();
+    const linkBox = link.getBoundingClientRect();
+    const dotLeft = linkBox.left + (parseFloat(getComputedStyle(link, "::before").left) || 0);
+    const name = link.querySelector(".t") || link;
+    const stepCenter = (dotLeft + name.getBoundingClientRect().right) / 2;
+    const stripCenter = navBox.left + nav.clientLeft + nav.clientWidth / 2;
+    const max = nav.scrollWidth - nav.clientWidth;
+    const target = Math.min(max, Math.max(0, nav.scrollLeft + stepCenter - stripCenter));
+    nav.scrollTo({ left: target, behavior: reduceMotion.matches ? "auto" : "smooth" });
   }
 
   let current = null;
