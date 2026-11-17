@@ -3,7 +3,7 @@
 @font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("/fonts/space-grotesk-latin.woff2") format("woff2"); }
 @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400 500; font-display: swap; src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2"); }
 :root {
-  --bg: #0d0e13; --panel: #15171f; --panel-2: #1c1f2a; --text: #ecebf5; --soft: #a9a7bb; --line: #2a2d3a; --line-hi: #3b3f52;
+  --bg: #0d0e13; --panel: #15171f; --panel-2: #1c1f2a; --text: #ecebf5; --soft: #a9a7bb; --line: #2a2d3a; --line-hi: #3b3f52; --tag-hover: #2b2f3d;
   --mint: #6ee7b7;        /* primary: 12.6:1 on --bg */
   --mint-hi: #a7f3d0;     /* hover tint */
   --on-mint: #0b1f17;     /* text on mint buttons: 11:1 */
@@ -118,7 +118,7 @@ footer ul { display: flex; flex-wrap: wrap; gap: 18px; list-style: none; margin:
 .chapter p strong, .chapter li strong { color: var(--text); font-weight: 600; }
 .big-quote { font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.35; color: var(--text) !important; letter-spacing: -.015em; max-width: 34ch !important; }
 
-.steps { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); counter-reset: s; }
+.steps { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 12px; grid-template-columns: 1fr; counter-reset: s; }
 .steps li { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; counter-increment: s; }
 .steps li::before { content: "0" counter(s); display: block; font: 500 .78rem var(--mono); color: var(--mint); margin-bottom: 8px; }
 .steps b { display: block; font-size: 1.1rem; margin-bottom: 4px; }
@@ -132,7 +132,9 @@ td { color: var(--soft); }
 td:first-child { color: var(--text); }
 tr:last-child td { border-bottom: 0; }
 
-.cards { display: grid; gap: 14px; margin-top: 24px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.cards { display: grid; gap: 14px; margin-top: 24px; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .cards, .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 840px) { .cards, .steps { grid-template-columns: repeat(3, 1fr); } }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
 .card b { display: block; margin-bottom: 6px; }
 .card p { margin: 0; font-size: .95rem; }
@@ -172,13 +174,12 @@ figcaption { font: 400 .8rem/1.5 var(--mono); color: var(--soft); margin-top: 10
 :root { --ease: cubic-bezier(.2, .7, .2, 1); --ease-in-out: cubic-bezier(.65, 0, .35, 1); }
 html { scroll-behavior: smooth; }
 
-/* 1 · Page to page: the new page cross-fades in and rises slightly; the header stays put,
-      and the highlighted menu item slides over to the new page's item. */
+/* 1 · Page to page: the new page cross-fades in and rises slightly; the header stays put and its
+      highlighted menu item simply fades from the old page's item to the new one. */
 @view-transition { navigation: auto; }
 .top { view-transition-name: site-header; }
-.top nav a[aria-current="page"] { view-transition-name: nav-current; }
 main { view-transition-name: page; }
-::view-transition-group(nav-current) { animation-duration: .45s; animation-timing-function: var(--ease-in-out); }
+::view-transition-group(site-header) { animation-duration: .3s; animation-timing-function: var(--ease-in-out); }
 ::view-transition-old(page) { animation: page-out .22s var(--ease-in-out) both; }
 ::view-transition-new(page) { animation: page-in .45s var(--ease) both; }
 @keyframes page-out { to { opacity: 0; transform: translateY(-6px); } }
@@ -214,8 +215,9 @@ main { view-transition-name: page; }
 .concept.final:hover { border-color: var(--mint-hi); }
 .panel .shot, .concept figure img, .shots img { transition: transform .6s var(--ease), border-color .3s var(--ease); }
 .panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: scale(1.015); border-color: var(--line-hi); }
-.tags li { transition: border-color .2s, color .2s; }
-.tags li:hover { border-color: var(--mint); color: var(--mint); }
+/* Tags are labels, not buttons: hover is an instant, quiet switch to a lighter gray (text stays 11.3:1). */
+.tags li { transition: none; }
+.tags li:hover { background: var(--tag-hover); }
 footer a, .crumb { transition: color .2s var(--ease), border-color .2s var(--ease); }
 /* Text links get an underline that draws in from the left. */
 footer a, .crumb { position: relative; text-decoration: none; }
@@ -338,3 +340,9 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
 main { padding-bottom: 24px; }
 .skip-link { position: absolute; left: 16px; top: -100px; z-index: 10; padding: 10px 16px; border-radius: 10px; background: var(--mint); color: var(--on-mint); font-weight: 600; text-decoration: none; }
 .skip-link:focus { top: 12px; }
+
+/* Case study: "at a glance" summary and the "What I learned" notes */
+.glance { margin-top: 32px; }
+.glance .card .mono { display: block; color: var(--mint); margin-bottom: 6px; }
+.glance .card p { color: var(--text); }
+.learned p { color: var(--soft); }

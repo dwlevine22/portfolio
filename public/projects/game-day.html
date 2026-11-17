@@ -36,6 +36,11 @@
       <div><dt>// platform</dt><dd>Web app for desktop and phone</dd></div>
       <div><dt>// built with</dt><dd>Claude Code, Next.js, Firestore, Google Cloud Run</dd></div>
     </dl>
+    <div class="cards glance">
+      <div class="card"><span class="mono">// the problem</span><p>Fans can't easily tell where fellow fans are watching the game.</p></div>
+      <div class="card"><span class="mono">// my approach</span><p>No formal research: I built first, logged my assumptions, and evaluated with UX methods.</p></div>
+      <div class="card"><span class="mono">// the result</span><p>A live web app, 11 usability fixes, and 4 navigation concepts compared side by side.</p></div>
+    </div>
   </div>
 
   <figure class="cs-hero">
@@ -60,45 +65,38 @@
 
   <section class="chapter" id="problem" aria-labelledby="problem-h">
     <span class="mono">01 · the problem</span>
-    <h2 id="problem-h">Watching a game is more fun in a crowd. Finding that crowd is guesswork.</h2>
-    <p>A fan who moved to a new city, follows an out-of-town team, or has friends who don't care about their sport has no easy way to know where fellow fans gather. Bars advertise TVs and wing specials, not who will be there. The answer lives in scattered group chats, forum threads and word of mouth.</p>
-    <h3>The solution</h3>
-    <p>Pick your team, see its next game, and see a live count of fans checked in at each spot, on a list and a map. Check in yourself and the count goes up for everyone.</p>
-    <h3>Who it's for</h3>
-    <ul>
-      <li><strong>Fans who want company for a game:</strong> transplants, newcomers, and fans of a team their friends don't follow.</li>
-      <li><strong>Regulars and groups</strong> deciding whether their usual spot will be lively, or where to meet.</li>
-    </ul>
+    <h2 id="problem-h">Finding a crowd to watch the game with is guesswork.</h2>
+    <p>Transplants, fans of out-of-town teams, and anyone whose friends don't follow their sport have no easy way to know where fellow fans gather. Bars advertise TVs, not who'll be there.</p>
+    <p><strong>The solution:</strong> pick your team, then see how many fans are checked in at each spot nearby, on a list and a map.</p>
   </section>
 
   <section class="chapter" id="approach" aria-labelledby="approach-h">
     <span class="mono">02 · my approach</span>
     <h2 id="approach-h">Build first, then test like a designer.</h2>
-    <p class="big-quote">I didn't start with formal research. I started with an idea and went straight into building it with Claude Code.</p>
-    <p>Building first meant every design question could be answered with a working screen instead of a static mockup. To keep that honest, I wrote down every assumption the design depended on, turned each one into a question for user testing, and reviewed the running prototype with the same methods I'd use on any design.</p>
+    <p class="big-quote">I skipped formal research and went straight into building with Claude Code.</p>
+    <p>To keep that honest, I logged every assumption as a question to test, and reviewed the working prototype with standard UX methods.</p>
     <ol class="steps" aria-label="Process">
-      <li><b>Assume</b><span>Write each assumption down with the decision it drives.</span></li>
+      <li><b>Assume</b><span>Log each assumption and the decision it drives.</span></li>
       <li><b>Build</b><span>A working prototype, one feature at a time.</span></li>
       <li><b>Evaluate</b><span>A heuristic review of every screen.</span></li>
-      <li><b>Listen</b><span>Informal feedback from someone trying it.</span></li>
-      <li><b>Compare</b><span>Build competing concepts for real, side by side.</span></li>
-      <li><b>Refine</b><span>Rounds of small, reasoned changes.</span></li>
+      <li><b>Listen</b><span>Informal feedback from someone using it.</span></li>
+      <li><b>Compare</b><span>Competing concepts, built for real.</span></li>
+      <li><b>Refine</b><span>Small changes, each with a reason.</span></li>
     </ol>
   </section>
 
   <section class="chapter" id="assumptions" aria-labelledby="assumptions-h">
     <span class="mono">03 · assumptions log</span>
     <h2 id="assumptions-h">Research I owe, written down as I went.</h2>
-    <p>With no time for research, every decision rests on an assumption. Logging them keeps the risk visible, and each one is ready to check in the first round of usability testing.</p>
+    <p>Every decision rests on an assumption, each ready to check in the first usability test.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th scope="col">assumption</th><th scope="col">decision it drove</th><th scope="col">how to check it</th></tr></thead>
+        <thead><tr><th scope="col">assumption</th><th scope="col">decision</th><th scope="col">how to test it</th></tr></thead>
         <tbody>
-          <tr><td>Fans care more about where other fans are than about distance</td><td>Fan counts are the biggest number on each card; distance is small print</td><td>Ask testers to choose a spot and say why</td></tr>
-          <tr><td>People won't make an account just to browse</td><td>Browsing is open to everyone; an account is asked for only at check-in</td><td>Watch where testers drop off</td></tr>
-          <tr><td>Counts are only useful if people can't inflate them</td><td>Check-ins need an account, one per game, and expire after the game</td><td>Ask testers whether they believe the numbers</td></tr>
-          <tr><td>Reviews from people who were actually there are trusted more</td><td>Only fans who checked in can review a spot</td><td>Compare trust in verified and unverified reviews</td></tr>
-          <tr><td>Passkeys are now easy enough for mainstream users</td><td>No passwords at all; passkey sign-in only</td><td>Test sign-up on a Mac, a Windows PC and an Android phone</td></tr>
+          <tr><td>Fans care more about where other fans are than about distance</td><td>Fan counts are the biggest number on each card</td><td>Ask testers why they picked a spot</td></tr>
+          <tr><td>People won't sign up just to browse</td><td>An account is asked for only at check-in</td><td>Watch where testers drop off</td></tr>
+          <tr><td>Counts are useless if people can inflate them</td><td>One check-in per account per game</td><td>Ask testers if they trust the numbers</td></tr>
+          <tr><td>Passkeys are now easy enough for most people</td><td>No passwords at all</td><td>Test sign-up on Mac, Windows and Android</td></tr>
         </tbody>
       </table>
     </div>
@@ -108,18 +106,18 @@
     <span class="mono">04 · design principles</span>
     <h2 id="principles-h">Five principles settled most arguments.</h2>
     <div class="cards">
-      <div class="card"><b>Value before sign-up</b><p>Anyone can pick a team and see where fans are. An account is asked for only when it pays off: checking in or writing a review.</p></div>
-      <div class="card"><b>Honest numbers</b><p>A fan count is only useful if people believe it: one check-in per person per game, expiring when the game ends.</p></div>
-      <div class="card"><b>Honest about the demo</b><p>A note on every page says what's made up (teams, spots, other fans) and what's real (your account and check-ins).</p></div>
-      <div class="card"><b>Accessible by default</b><p>WCAG 2.1 AA was a requirement from the first plan, not a later pass.</p></div>
-      <div class="card"><b>A sporty brand that never gets in the way</b><p>One "scoreboard orange" and a condensed display face. Team colors appear only in team badges, so the interface never clashes with a team's palette.</p></div>
+      <div class="card"><b>Value before sign-up</b><p>Browse freely. Sign up only to check in or review.</p></div>
+      <div class="card"><b>Honest numbers</b><p>One check-in per person per game, gone when it ends.</p></div>
+      <div class="card"><b>Honest about the demo</b><p>Every page says what's made up and what's real.</p></div>
+      <div class="card"><b>Accessible by default</b><p>WCAG 2.1 AA from the first plan, not a later pass.</p></div>
+      <div class="card"><b>A brand that stays out of the way</b><p>One orange. Team colors appear only on team badges.</p></div>
     </div>
   </section>
 
   <section class="chapter" id="evaluation" aria-labelledby="evaluation-h">
     <span class="mono">05 · evaluation</span>
-    <h2 id="evaluation-h">Testing without users: a heuristic review.</h2>
-    <p>I walked every flow as a first-time visitor, a returning fan and a keyboard-only user, checking each screen against Nielsen's 10 usability heuristics and asking what could go wrong: no connection, an expired sign-in, an empty state, a tiny screen.</p>
+    <h2 id="evaluation-h">No users yet, so I ran a heuristic review.</h2>
+    <p>I walked every flow as a new visitor, a returning fan and a keyboard-only user, against Nielsen's 10 usability heuristics.</p>
     <div class="stats">
       <div class="stat"><b>11</b><span>usability problems found and fixed</span></div>
       <div class="stat"><b>3</b><span>user roles walked through every flow</span></div>
@@ -127,14 +125,13 @@
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th scope="col">heuristic</th><th scope="col">problem found</th><th scope="col">change made</th></tr></thead>
+        <thead><tr><th scope="col">heuristic</th><th scope="col">problem</th><th scope="col">fix</th></tr></thead>
         <tbody>
-          <tr><td>Visibility of system status</td><td>A failed check-in was announced only to screen readers; sighted users saw nothing</td><td>A visible message explains what happened and offers Sign in or Dismiss</td></tr>
-          <tr><td>Help users recover from errors</td><td>If the schedule failed to load, the page said "Loading…" forever</td><td>A clear "couldn't load" message with a Try again button</td></tr>
-          <tr><td>Match with the real world</td><td>Game times had no time zone</td><td>Every time is labelled with its zone</td></tr>
-          <tr><td>Recognition rather than recall</td><td>Deciding on a spot's page meant going back to find it in the list to check in</td><td>Each spot's page has its own check-in button</td></tr>
-          <tr><td>Error prevention</td><td>A half-written review was lost if you left the page</td><td>Drafts are kept until posted</td></tr>
-          <tr><td>User control and freedom</td><td>There was no way to delete your account</td><td>"Delete your account" lists exactly what is removed and asks to confirm</td></tr>
+          <tr><td>Visibility of system status</td><td>A failed check-in was silent for sighted users</td><td>A visible message with Sign in or Dismiss</td></tr>
+          <tr><td>Help users recover from errors</td><td>A failed load said "Loading…" forever</td><td>"Couldn't load" with a Try again button</td></tr>
+          <tr><td>Recognition rather than recall</td><td>Checking in meant going back to find the spot in the list</td><td>A check-in button on every spot's page</td></tr>
+          <tr><td>Error prevention</td><td>Leaving the page lost a half-written review</td><td>Drafts are kept until posted</td></tr>
+          <tr><td>User control and freedom</td><td>No way to delete an account</td><td>"Delete your account", listing exactly what goes</td></tr>
         </tbody>
       </table>
     </div>
@@ -142,21 +139,20 @@
 
   <section class="chapter" id="iteration" aria-labelledby="iteration-h">
     <span class="mono">06 · iteration</span>
-    <h2 id="iteration-h">From one long page to clear steps.</h2>
-    <p><strong>The feedback.</strong> In an informal test, a family member found the home page tiring. Picking a team was at the top, the spots were further down, and changing your mind meant scrolling up and down the same long page. Splitting the job into steps was the natural fix, but there were several ways to do it.</p>
-    <p><strong>Three requirements for every concept:</strong> it's always clear which step you're on, going back and forth is easy, and a team must be picked before the spots can be seen.</p>
-    <p><strong>Built for real, not mocked up.</strong> Each concept is a working set of pages using the real teams, map and check-ins. Only the navigation differs, so the comparison is about navigation alone.</p>
+    <h2 id="iteration-h">Four navigation concepts, built for real.</h2>
+    <p><strong>Why:</strong> a tester found the single long page tiring. Teams were at the top and spots far below, so changing your mind meant scrolling up and down.</p>
+    <p><strong>Every concept had to:</strong> show which step you're on, make going back easy, and require a team before showing spots.</p>
     <figure>
       <img src="/images/game-day/concepts.jpg" width="1280" height="900" loading="lazy" alt="Game Day's design concepts page: a card for each concept with a sketch of its layout, its strengths and what to watch out for">
-      <figcaption>A page in the app lets anyone try each concept from a fresh start.</figcaption>
+      <figcaption>Each concept is a working set of pages with real data, so only the navigation differs.</figcaption>
     </figure>
 
     <article class="concept">
       <div>
         <span class="mono">concept a</span>
         <h3>Step by step</h3>
-        <p>Three numbered pages (Team, Game, Bar) with Back and Next fixed to the bottom of the screen, like a checkout.</p>
-        <p class="verdict">kept: the progress line and check marks<br>dropped: one page too many; the bottom bar takes about 80px of a phone screen</p>
+        <p>Three pages, with Back and Next fixed to the bottom.</p>
+        <p class="verdict">kept: the progress line and check marks<br>dropped: one page too many</p>
       </div>
       <figure><img src="/images/game-day/concept-a.jpg" width="1280" height="800" loading="lazy" alt="Concept A: Step 1 of 3 with a progress line and numbered steps, and a Next: Game button fixed to the bottom"></figure>
     </article>
@@ -164,8 +160,8 @@
       <div>
         <span class="mono">concept b</span>
         <h3>Two tabs</h3>
-        <p>Team and Bars tabs pinned to the top; each shows a line that updates with your choice. Bars is locked until a team is picked.</p>
-        <p class="verdict">kept: the sticky bar and updating subtext<br>dropped: moving on depends on noticing a tab, away from where attention is</p>
+        <p>Team and Bars tabs pinned to the top. Bars stays locked until you pick a team.</p>
+        <p class="verdict">kept: the sticky bar and its updating subtext<br>dropped: the next step was easy to miss</p>
       </div>
       <figure><img src="/images/game-day/concept-b.jpg" width="1280" height="800" loading="lazy" alt="Concept B: two tabs pinned to the top, Team showing Boston Lanterns and Bars showing Where Lanterns fans are"></figure>
     </article>
@@ -173,8 +169,8 @@
       <div>
         <span class="mono">concept c</span>
         <h3>Tap and go</h3>
-        <p>Tapping a team moves you straight to its spots, with a "Change team" link to get back. The fastest of the four.</p>
-        <p class="verdict">dropped: moving on the instant you tap surprises people, with no moment to check the choice</p>
+        <p>Tapping a team jumps straight to its spots.</p>
+        <p class="verdict">dropped: moving on instantly surprises people</p>
       </div>
       <figure><img src="/images/game-day/concept-c.jpg" width="1280" height="800" loading="lazy" alt="Concept C on the bar step: a breadcrumb, Step 2 of 2, a full progress bar and a Your team card with Change team"></figure>
     </article>
@@ -182,7 +178,7 @@
       <div>
         <span class="mono">concept d · shipped</span>
         <h3>Best of both</h3>
-        <p>A's progress line and check marks inside B's sticky bar. After a team is picked, a button fades up at the bottom of the screen, where a thumb rests. Steps slide in the direction you're going, except for people who've turned on Reduce motion.</p>
+        <p>A's progress line inside B's sticky bar, plus a button that fades in at the bottom once a team is picked.</p>
         <p class="verdict">became the live site after four rounds of refinement</p>
       </div>
       <figure><img src="/images/game-day/team.jpg" width="1280" height="800" loading="lazy" alt="The live Team step: the step bar with Team done, and team search with My teams and sport filters"></figure>
@@ -193,11 +189,10 @@
       <table>
         <thead><tr><th scope="col">change</th><th scope="col">why</th></tr></thead>
         <tbody>
-          <tr><td>"Bars" renamed "Spots"</td><td>Fans under 21 watch games too, at restaurants and other places; "Spots" includes everyone</td></tr>
-          <tr><td>The next step no longer highlighted in the step bar</td><td>Two highlighted things competed; the fade-in button is now the single cue to move on</td></tr>
-          <tr><td>The game card is about half as tall, with city codes (BOS vs LA)</td><td>"Where the fans are" is now visible without scrolling; screen readers still hear full team names</td></tr>
-          <tr><td>A check-in takes you back to Home, where the celebration plays</td><td>It lands where your check-in now appears, which closes the loop</td></tr>
-          <tr><td>Start time instead of a countdown</td><td>Fans plan around the start time; a ticking countdown added motion without meaning</td></tr>
+          <tr><td>"Bars" renamed "Spots"</td><td>Fans under 21 watch games too</td></tr>
+          <tr><td>One cue to move on: the fade-in button</td><td>A highlighted step competed with it</td></tr>
+          <tr><td>Game card cut to half its height</td><td>The map now shows without scrolling</td></tr>
+          <tr><td>Start time instead of a countdown</td><td>Fans plan around kickoff; a ticking clock added motion, not meaning</td></tr>
         </tbody>
       </table>
     </div>
@@ -207,21 +202,22 @@
     <span class="mono">07 · accessibility</span>
     <h2 id="accessibility-h">WCAG 2.1 AA from the first draft.</h2>
     <div class="cards">
-      <div class="card"><b>Contrast tested in code</b><p>Text meets 4.5:1 and icons and focus rings 3:1, in dark and light mode.</p></div>
-      <div class="card"><b>Never color alone</b><p>"Checked in", "popular" and errors always carry an icon and words.</p></div>
-      <div class="card"><b>Keyboard first</b><p>Everything works with Tab, Enter, Space and Escape, with a visible focus ring and a skip link.</p></div>
-      <div class="card"><b>Screen readers</b><p>Real headings, labelled fields, spoken names for icon buttons, ratings read as "Rated 4 out of 5".</p></div>
-      <div class="card"><b>Motion and size</b><p>Reduce motion turns off confetti and slides. Touch targets are at least 44px.</p></div>
+      <div class="card"><b>Contrast tested in code</b><p>4.5:1 for text and 3:1 for icons, in dark and light mode.</p></div>
+      <div class="card"><b>Never color alone</b><p>Status and errors always have an icon and words.</p></div>
+      <div class="card"><b>Keyboard first</b><p>Everything works with the keyboard, with a visible focus ring.</p></div>
+      <div class="card"><b>Screen readers</b><p>Real headings, labelled fields, and named icon buttons.</p></div>
+      <div class="card"><b>Reduce motion</b><p>Confetti and slides switch off when it's on.</p></div>
+      <div class="card"><b>Touch targets</b><p>At least 44px, on screens down to 320px wide.</p></div>
     </div>
   </section>
 
   <section class="chapter" id="outcome" aria-labelledby="outcome-h">
     <span class="mono">08 · outcome</span>
     <h2 id="outcome-h">A working app, live on Google Cloud.</h2>
-    <p>Accounts, check-ins and reviews are real. The city is real too: Somerville, Massachusetts, with made-up teams, spots and 600 simulated fans so the demo never feels empty.</p>
+    <p>Real accounts, check-ins and reviews in a real neighborhood (Somerville, MA), with 600 simulated fans so it never feels empty.</p>
     <div class="stats">
       <div class="stat"><b>4</b><span>navigation concepts built and compared</span></div>
-      <div class="stat"><b>5</b><span>design principles</span></div>
+      <div class="stat"><b>11</b><span>usability fixes</span></div>
       <div class="stat"><b>0</b><span>passwords: sign-in uses passkeys</span></div>
     </div>
     <div class="shots two">
@@ -237,15 +233,18 @@
 
   <section class="chapter" id="next" aria-labelledby="next-h">
     <span class="mono">09 · what's next</span>
-    <h2 id="next-h">Test the assumptions with real fans.</h2>
+    <h2 id="next-h">Next: test the assumptions with real fans.</h2>
     <ul>
-      <li><strong>Usability test with 3 to 5 fans,</strong> including one who uses a screen reader, against the assumptions log.</li>
-      <li><strong>Test passkeys on Windows and Android,</strong> and with VoiceOver.</li>
-      <li><strong>Notifications:</strong> "12 Foghorns fans are at Fourth &amp; Long tonight".</li>
-      <li><strong>A view for bars:</strong> expected crowd by team, to plan staff and specials.</li>
+      <li><strong>Usability test</strong> with 3 to 5 fans, including a screen reader user.</li>
+      <li><strong>Passkeys</strong> on Windows and Android, and with VoiceOver.</li>
+      <li><strong>New features:</strong> game-night notifications, and crowd forecasts for bar owners.</li>
     </ul>
     <h3>What I learned</h3>
-    <p class="todo">Your words here: two or three sentences on what building first taught you, for example what changed once you could click through a real screen, or what you'd research first next time.</p>
+    <div class="learned">
+      <p><strong>A new way to prototype.</strong> While I have used AI for other aspects of UX design, including making unbiased questions for user interviews, summarizing meetings, and synthesizing insights, I had never used it to build anything. This project exposed me to another way of prototyping where I can quickly build and test solutions myself.</p>
+      <p><strong>Clearer prompts.</strong> I also learned more about how to write clear and effective prompts to get the results I wanted. I became more specific with what I told the agent and made sure to provide enough context for it to understand the point of the requests I ask for. I have only used chatbots for spontaneous questions before taking on this project, so this experience taught me how to interact with AI in a new way.</p>
+      <p><strong>More concepts, better decisions.</strong> One strategy that made it easy to make more informed design decisions with Claude was telling it to generate multiple concepts. At first, I was working with only one concept, which limited idea exploration. Later, I learned that I could ask Claude to create multiple concepts, allowing me to weigh design decisions as I would in a full design project.</p>
+    </div>
   </section>
   </div>
   </div>
