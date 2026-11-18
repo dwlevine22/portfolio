@@ -159,6 +159,21 @@ figcaption { font: 400 .8rem/1.5 var(--mono); color: var(--soft); margin-top: 10
 .concept figure { margin: 0; }
 .concept.final { border-color: var(--mint); }
 
+/* Before and after: an earlier build beside the live site, then a short list of what changed. */
+.compare { padding: 22px; margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; }
+.compare h4 { font-size: 1.1rem; letter-spacing: -.01em; margin: 0 0 4px; }
+.compare > p { margin: 0; font-size: .95rem; }
+.compare .pair { display: grid; gap: 14px; margin-top: 18px; }
+@media (min-width: 840px) { .compare .pair { grid-template-columns: 1fr 1fr; } }
+.compare .pair.phone { grid-template-columns: 1fr 1fr; max-width: 520px; }
+.compare figure { margin: 0; }
+.compare figcaption { margin: 0 0 8px; }
+.compare figcaption b { font-weight: 500; color: var(--text); }
+.compare .after figcaption b { color: var(--mint); }
+.compare .after img { border-color: var(--mint); }
+.compare ul { margin: 18px 0 0; padding-left: 1.1em; color: var(--soft); font-size: .95rem; display: grid; gap: 4px; }
+.compare li::marker { color: var(--mint); }
+
 .todo { border: 1px dashed var(--mint); border-radius: 14px; padding: 16px 18px; color: var(--mint-hi) !important; background: rgba(110,231,183,.06); font-size: .95rem; }
 
 .next-up { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 28px; margin: 8px 0 32px; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; }
@@ -200,7 +215,7 @@ main { view-transition-name: page; }
 /* 3 · Scrolling: sections and cards fade up as they come into view (browsers that support
       scroll-driven animations; elsewhere they simply appear, so nothing is ever hidden). */
 @supports (animation-timeline: view()) {
-  .chapter > *, .concept, .steps li, .cards .card, .stats .stat, .shots figure, .phones img, .next-up,
+  .chapter > *, .concept, .compare, .steps li, .cards .card, .stats .stat, .shots figure, .phones img, .next-up,
   .grid.two > .panel {
     animation: rise linear both;
     animation-timeline: view();
@@ -209,9 +224,9 @@ main { view-transition-name: page; }
 }
 
 /* 4 · Hover and focus: small, consistent responses. */
-.panel, .card, .concept, .steps li { transition: border-color .25s var(--ease), transform .35s var(--ease), background .25s var(--ease); }
+.panel, .card, .concept, .compare, .steps li { transition: border-color .25s var(--ease), transform .35s var(--ease), background .25s var(--ease); }
 .card:hover, .steps li:hover { border-color: var(--line-hi); transform: translateY(-3px); }
-.concept:hover { border-color: var(--line-hi); }
+.concept:hover, .compare:hover { border-color: var(--line-hi); }
 .concept.final:hover { border-color: var(--mint-hi); }
 .panel .shot, .concept figure img, .shots img { transition: transform .6s var(--ease), border-color .3s var(--ease); }
 .panel:hover .shot, .concept:hover figure img, .shots figure:hover img { transform: scale(1.015); border-color: var(--line-hi); }
