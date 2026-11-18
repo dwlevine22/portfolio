@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playbook design system · David Levine</title>
+<meta name="description" content="Playbook, a small design system pulled out of Game Day so the next project doesn't start from a blank page.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css?v=2">
+<link rel="stylesheet" href="/playbook.css?v=2">
+<script src="/playbook-demo.js?v=2" defer></script>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><b>~/</b>davidlevine.dev</a>
+  <nav aria-label="Main">
+    <a href="/">Home</a>
+    <a href="/projects" aria-current="page">Projects</a>
+    <a href="/about">About</a>
+  </nav>
+</div></header>
+<main id="main" class="wrap">
+
+  <div class="cs-head">
+    <a class="crumb mono" href="/projects">← ~/projects</a>
+    <h1>Playbook</h1>
+    <p class="lede">Game Day's look, pulled out into a small design system so the next project doesn't start from a blank page.</p>
+    <dl class="facts">
+      <div><dt>// what it is</dt><dd>A side project: a design system with two themes</dd></div>
+      <div><dt>// role</dt><dd>UX designer; Claude audited Game Day's code and wrote the system</dd></div>
+      <div><dt>// timeline</dt><dd>November 2026, right after Game Day</dd></div>
+      <div><dt>// inside</dt><dd>4 color themes, 9 components, 1 contrast engine</dd></div>
+    </dl>
+  </div>
+
+  <section class="chapter" id="try" aria-labelledby="try-h">
+    <span class="mono">01 · try it</span>
+    <h2 id="try-h">Flip the switch.</h2>
+    <p>Same components, same markup. Only the theme changes: color, typefaces, corners, motion, even the voice. "City" is a made-up test theme that proves the swap works.</p>
+
+    <fieldset class="pb-switch">
+      <legend>// theme</legend>
+      <label><input type="radio" name="pb-theme" value="gameday-dark" checked><span class="sw gd-dark" aria-hidden="true"></span>Game Day · dark</label>
+      <label><input type="radio" name="pb-theme" value="gameday-light"><span class="sw gd-light" aria-hidden="true"></span>Game Day · light</label>
+      <label><input type="radio" name="pb-theme" value="city-light"><span class="sw city-light" aria-hidden="true"></span>City · light</label>
+      <label><input type="radio" name="pb-theme" value="city-dark"><span class="sw city-dark" aria-hidden="true"></span>City · dark</label>
+    </fieldset>
+
+    <div class="pb-demo" data-theme="gameday-dark" role="group" aria-label="Playbook components preview">
+      <div class="pb-top">
+        <span class="pb-wordmark"><span class="pb-only-gd">Game <b>Day</b></span><span class="pb-only-city">Harborview Permits</span></span>
+        <span class="pb-cap"><span class="pb-only-gd">Somerville · tonight</span><span class="pb-only-city">City services</span></span>
+      </div>
+
+      <div>
+        <p class="pb-cap"><span class="pb-only-gd">Kickoff 8:20 PM · Football</span><span class="pb-only-city">Residential permits</span></p>
+        <p class="pb-display"><span class="pb-only-gd">Who's watching tonight?</span><span class="pb-only-city">Apply for a parking permit</span></p>
+      </div>
+
+      <div class="pb-cols">
+        <div class="pb-group">
+          <p class="pb-cap">Buttons</p>
+          <div class="pb-row">
+            <button class="pb-btn pb-btn--primary" type="button" data-toast><span class="pb-only-gd">I'm going</span><span class="pb-only-city">Save application</span></button>
+            <button class="pb-btn pb-btn--secondary" type="button"><span class="pb-only-gd">See the map</span><span class="pb-only-city">Check my zone</span></button>
+          </div>
+          <div class="pb-row">
+            <button class="pb-btn pb-btn--secondary pb-btn--danger" type="button"><span class="pb-only-gd">Delete account</span><span class="pb-only-city">Withdraw application</span></button>
+            <button class="pb-btn pb-btn--primary" type="button" disabled><span class="pb-only-gd">Checked in</span><span class="pb-only-city">Submitted</span></button>
+          </div>
+          <div class="pb-live" aria-live="polite"></div>
+
+          <p class="pb-cap">Chips</p>
+          <div class="pb-row pb-chips" role="group" aria-label="Sort">
+            <button class="pb-chip" type="button" aria-pressed="true"><span class="pb-only-gd">Closest</span><span class="pb-only-city">Newest first</span></button>
+            <button class="pb-chip" type="button" aria-pressed="false"><span class="pb-only-gd">Most popular</span><span class="pb-only-city">Oldest first</span></button>
+            <button class="pb-chip" type="button" aria-pressed="false"><span class="pb-only-gd">Open late</span><span class="pb-only-city">Needs action</span></button>
+          </div>
+
+          <p class="pb-cap">Badges</p>
+          <div class="pb-row">
+            <span class="pb-badge"><span class="pb-only-gd">12 fans tonight</span><span class="pb-only-city">In review</span></span>
+            <span class="pb-badge pb-badge--success">✓ <span class="pb-only-gd">You're checked in</span><span class="pb-only-city">Approved</span></span>
+            <span class="pb-badge pb-badge--warning"><span class="pb-only-gd">Fills up early</span><span class="pb-only-city">Expires in 10 days</span></span>
+            <span class="pb-badge pb-badge--neutral"><span class="pb-only-gd">Basketball</span><span class="pb-only-city">Zone 4</span></span>
+          </div>
+        </div>
+
+        <div class="pb-group">
+          <p class="pb-cap">Card</p>
+          <article class="pb-card">
+            <p class="pb-cap"><span class="pb-only-gd">Union Square · Washington St &amp; Columbus Ave</span><span class="pb-only-city">Permit · Zone 4</span></p>
+            <p class="pb-card__title"><span class="pb-only-gd">Two-Minute Warning</span><span class="pb-only-city">Residential parking permit</span></p>
+            <p class="pb-card__meta"><span class="pb-only-gd">Tight, loud football hangout that fills up before kickoff.</span><span class="pb-only-city">You need a lease or a utility bill from the last 60 days.</span></p>
+            <div class="pb-card__foot"><span class="pb-badge"><span class="pb-only-gd">12 fans tonight</span><span class="pb-only-city">In review</span></span></div>
+          </article>
+
+          <p class="pb-cap">Text field</p>
+          <div class="pb-field">
+            <label for="pb-email">Email</label>
+            <p class="pb-hint" id="pb-email-hint"><span class="pb-only-gd">For account recovery. Never shown to other fans.</span><span class="pb-only-city">We send your permit and renewal reminders here.</span></p>
+            <input class="pb-input" id="pb-email" type="email" aria-invalid="true" aria-describedby="pb-email-hint pb-email-error" value="lou@">
+            <p class="pb-error" id="pb-email-error">Enter the whole address, like name@example.com.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="pb-note">Live components, not screenshots. Press the main button to see the toast. With Reduce motion on, nothing animates.</p>
+  </section>
+
+  <section class="chapter" id="audit" aria-labelledby="audit-h">
+    <span class="mono">02 · the audit</span>
+    <h2 id="audit-h">First, count everything.</h2>
+    <p>Before writing a single token, Claude went through every screen of Game Day and counted what it actually used. Fast prototyping had left a mess.</p>
+    <div class="stats">
+      <div class="stat"><b>12 → 7</b><span>text sizes became 7 named styles</span></div>
+      <div class="stat"><b>42 → 8</b><span>padding values became an 8-step spacing scale</span></div>
+      <div class="stat"><b>7 → 5</b><span>corner radii became 5 named ones</span></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">found in game day</th><th scope="col">what playbook does</th></tr></thead>
+        <tbody>
+          <tr><td>Body text mostly 14px (115 uses of 14px, 2 of 16px)</td><td>Body moves up to 16px</td></tr>
+          <tr><td>The same text field style copied into 3 files</td><td>One TextField component</td></tr>
+          <tr><td>No error color: invalid fields reused the orange accent</td><td>New error, success and warning colors, always with words</td></tr>
+          <tr><td>2 shared button styles, used 58 times</td><td>Kept as is. Game Day already got this right.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="split" aria-labelledby="split-h">
+    <span class="mono">03 · the split</span>
+    <h2 id="split-h">Foundation stays. Theme changes.</h2>
+    <p>Every decision lives in one of two layers. A new product only picks a theme; the foundation comes along for free.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">what</th><th scope="col">game day</th><th scope="col">city test</th></tr></thead>
+        <tbody>
+          <tr><td>Brand color</td><td>Scoreboard orange</td><td>Harbor teal</td></tr>
+          <tr><td>Typefaces</td><td>Bebas Neue + Inter</td><td>Public Sans</td></tr>
+          <tr><td>Corners</td><td>16px controls, 24px cards</td><td>4px controls, 8px cards</td></tr>
+          <tr><td>Motion</td><td>Press, slide, confetti</td><td>None</td></tr>
+          <tr><td>Voice</td><td>"You're in! Go Foghorns!"</td><td>"Saved. You can change this later."</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>One brand color goes in; Game Day's contrast engine turns it into four accessible versions for text, edges, fills and the text on top of them, in both light and dark.</p>
+  </section>
+
+  <section class="chapter" id="rules" aria-labelledby="rules-h">
+    <span class="mono">04 · the rules</span>
+    <h2 id="rules-h">Some things never change.</h2>
+    <div class="cards">
+      <div class="card"><b>Contrast</b><p>4.5:1 for text, 3:1 for controls, icons and the focus ring, in every theme.</p></div>
+      <div class="card"><b>Big enough to tap</b><p>Buttons and fields at least 48px tall; links and menu options at least 44px.</p></div>
+      <div class="card"><b>Never color alone</b><p>Chips get a check mark, errors get an icon and words.</p></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="open" aria-labelledby="open-h">
+    <span class="mono">05 · still open</span>
+    <h2 id="open-h">Unfinished, on purpose.</h2>
+    <p>A few calls I'm leaving until a second real product uses the system:</p>
+    <div class="cards">
+      <div class="card"><b>The 6px gap</b><p>Used 11 times in Game Day. Its own step, or round it to 8px?</p></div>
+      <div class="card"><b>Red vs. orange</b><p>The error red sits close to Game Day's orange. Move it, or keep relying on icons and words?</p></div>
+      <div class="card"><b>44 or 48?</b><p>Two minimum tap sizes. Should they become one?</p></div>
+    </div>
+  </section>
+
+  <div class="next-up">
+    <h2>See where it came from.</h2>
+    <div class="btns">
+      <a class="btn" href="/projects/game-day">Game Day case study <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn line" href="/projects">All projects</a>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">
+  <span class="mono">© 2026 David Levine</span>
+  <ul class="mono">
+    <li><a href="mailto:dwlevine22@gmail.com">email</a></li>
+    <li><a href="https://github.com/dwlevine22" target="_blank" rel="noopener">github<span class="vh"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.linkedin.com/in/davidwlevine/" target="_blank" rel="noopener">linkedin<span class="vh"> (opens in a new tab)</span></a></li>
+    <li><a href="https://drive.google.com/file/d/1WdOb0dCheoO40RHfO2dALUa9t2qTbsix/view?usp=sharing" target="_blank" rel="noopener">résumé.pdf<span class="vh"> (opens in a new tab)</span></a></li>
+  </ul>
+</div></footer>
+<a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</body>
+</html>
