@@ -26,7 +26,7 @@
   <div class="cs-head">
     <a class="crumb mono" href="/projects">← ~/projects</a>
     <h1>Game Day</h1>
-    <p class="lede">Helping sports fans find where fellow fans are watching tonight's game, so they can watch together instead of alone.</p>
+    <p class="lede">Fans couldn't tell where fellow fans were watching the game. I designed and shipped Game Day, a live web app that shows how many fans of your team are at each spot nearby.</p>
     <div class="btns">
       <a class="btn" href="https://gameday.davidlevine.dev/" target="_blank" rel="noopener">Open Game Day <span class="arr" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
     </div>
@@ -34,47 +34,50 @@
       <div><dt>// role</dt><dd>UX designer; I directed Claude Code, which wrote the code</dd></div>
       <div><dt>// timeline</dt><dd>November 2026; first working version in about two days</dd></div>
       <div><dt>// platform</dt><dd>Web app for desktop and phone</dd></div>
-      <div><dt>// built with</dt><dd>Claude Code, Next.js, Firestore, Google Cloud Run</dd></div>
+      <div><dt>// tools</dt><dd>Claude Code, Next.js, Firestore, Google Cloud Run</dd></div>
     </dl>
     <div class="cards glance">
       <div class="card"><span class="mono">// the problem</span><p>Fans can't easily tell where fellow fans are watching the game.</p></div>
-      <div class="card"><span class="mono">// my approach</span><p>No formal research: I built first, logged my assumptions, and evaluated with UX methods.</p></div>
-      <div class="card"><span class="mono">// the result</span><p>A live web app, 11 usability fixes, and 4 navigation concepts compared side by side.</p></div>
+      <div class="card"><span class="mono">// what I did</span><p>Built first, logged every assumption, compared 4 navigation concepts, and ran a heuristic review.</p></div>
+      <div class="card"><span class="mono">// outcome so far</span><p>A live app anyone can use, with 11 usability problems fixed. Testing with fans is next.</p></div>
     </div>
   </div>
 
   <figure class="cs-hero">
-    <img src="/images/game-day/spots.jpg" width="1280" height="800" alt="Game Day's Spots step: a step bar showing Team done and Spots current, the next game Boston vs LA with its tipoff time, and Where the fans are with a list of bars beside a map of Somerville">
+    <img src="/images/game-day/spots.jpg" width="1280" height="800" alt="Game Day's Spots step: a Team, Games, Spots step bar, the live New England vs Philadelphia game, and Where the fans are with a list of spots and their fan counts beside a map of Somerville">
   </figure>
 
   <div class="cs-body">
   <nav class="cs-nav" aria-label="Case study sections">
     <ol>
       <li><a href="#problem"><span class="n">01</span><span class="t">Problem</span></a></li>
-      <li><a href="#approach"><span class="n">02</span><span class="t">Approach</span></a></li>
-      <li><a href="#assumptions"><span class="n">03</span><span class="t">Assumptions</span></a></li>
-      <li><a href="#principles"><span class="n">04</span><span class="t">Principles</span></a></li>
-      <li><a href="#evaluation"><span class="n">05</span><span class="t">Evaluation</span></a></li>
-      <li><a href="#iteration"><span class="n">06</span><span class="t">Iteration</span></a></li>
-      <li><a href="#accessibility"><span class="n">07</span><span class="t">Accessibility</span></a></li>
-      <li><a href="#outcome"><span class="n">08</span><span class="t">Outcome</span></a></li>
-      <li><a href="#next"><span class="n">09</span><span class="t">What's next</span></a></li>
+      <li><a href="#research"><span class="n">02</span><span class="t">Research</span></a></li>
+      <li><a href="#principles"><span class="n">03</span><span class="t">Principles</span></a></li>
+      <li><a href="#iteration"><span class="n">04</span><span class="t">Ideation</span></a></li>
+      <li><a href="#design"><span class="n">05</span><span class="t">Final design</span></a></li>
+      <li><a href="#evaluation"><span class="n">06</span><span class="t">Evaluation</span></a></li>
+      <li><a href="#outcome"><span class="n">07</span><span class="t">Outcome</span></a></li>
     </ol>
   </nav>
   <div class="cs-content">
 
   <section class="chapter" id="problem" aria-labelledby="problem-h">
-    <span class="mono">01 · the problem</span>
+    <span class="mono">01 · problem &amp; context</span>
     <h2 id="problem-h">Finding a crowd to watch the game with is guesswork.</h2>
     <p>Transplants, fans of out-of-town teams, and anyone whose friends don't follow their sport have no easy way to know where fellow fans gather. Bars advertise TVs, not who'll be there.</p>
-    <p><strong>The solution:</strong> pick your team, then see how many fans are checked in at each spot nearby, on a list and a map.</p>
+    <div class="cards glance">
+      <div class="card"><span class="mono">// who it's for</span><p>A fan who moved to Somerville and still follows the team from back home. They know which bars have TVs, not which one their team's fans fill on game day.</p></div>
+      <div class="card"><span class="mono">// why it matters to fans</span><p>Watching with people who cheer for the same team is the point of going out for the game.</p></div>
+      <div class="card"><span class="mono">// why it matters to spots</span><p>A spot that becomes a team's home base can count on a crowd every game night.</p></div>
+    </div>
+    <p class="note mono">A proto-persona: assumed, not yet checked with real fans.</p>
+    <p><strong>The solution:</strong> pick your team and game, then see how many fans are checked in at each spot nearby, on a list and a map.</p>
   </section>
 
-  <section class="chapter" id="approach" aria-labelledby="approach-h">
-    <span class="mono">02 · my approach</span>
-    <h2 id="approach-h">Build first, then test like a designer.</h2>
-    <p class="big-quote">I skipped formal research and went straight into building with Claude Code.</p>
-    <p>To keep that honest, I logged every assumption as a question to test, and reviewed the working prototype with standard UX methods.</p>
+  <section class="chapter" id="research" aria-labelledby="research-h">
+    <span class="mono">02 · research &amp; synthesis</span>
+    <h2 id="research-h">No interviews yet. Here's what I used instead.</h2>
+    <p><strong>Why no formal research:</strong> Game Day started as a prototype I wanted working in about two days, with no time to recruit and interview fans. So I went straight into building with Claude Code and kept it honest in other ways.</p>
     <ol class="steps" aria-label="Process">
       <li><b>Assume</b><span>Log each assumption and the decision it drives.</span></li>
       <li><b>Build</b><span>A working prototype, one feature at a time.</span></li>
@@ -83,11 +86,10 @@
       <li><b>Compare</b><span>Competing concepts, built for real.</span></li>
       <li><b>Refine</b><span>Small changes, each with a reason.</span></li>
     </ol>
-  </section>
-
-  <section class="chapter" id="assumptions" aria-labelledby="assumptions-h">
-    <span class="mono">03 · assumptions log</span>
-    <h2 id="assumptions-h">Research I owe, written down as I went.</h2>
+    <h3>The insight that shaped the design</h3>
+    <p class="big-quote">A tester found the single long page tiring: teams at the top, spots far below.</p>
+    <p>Changing your mind meant scrolling up and down. That one comment led to the step-by-step navigation in <a href="#iteration">Ideation</a>.</p>
+    <h3>Assumptions log: research I owe</h3>
     <p>Every decision rests on an assumption, each ready to check in the first usability test.</p>
     <div class="table-wrap">
       <table>
@@ -103,7 +105,7 @@
   </section>
 
   <section class="chapter" id="principles" aria-labelledby="principles-h">
-    <span class="mono">04 · design principles</span>
+    <span class="mono">03 · design principles</span>
     <h2 id="principles-h">Five principles settled most arguments.</h2>
     <div class="cards">
       <div class="card"><b>Value before sign-up</b><p>Browse freely. Sign up only to check in or review.</p></div>
@@ -114,33 +116,10 @@
     </div>
   </section>
 
-  <section class="chapter" id="evaluation" aria-labelledby="evaluation-h">
-    <span class="mono">05 · evaluation</span>
-    <h2 id="evaluation-h">No users yet, so I ran a heuristic review.</h2>
-    <p>I walked every flow as a new visitor, a returning fan and a keyboard-only user, against Nielsen's 10 usability heuristics.</p>
-    <div class="stats">
-      <div class="stat"><b>11</b><span>usability problems found and fixed</span></div>
-      <div class="stat"><b>3</b><span>user roles walked through every flow</span></div>
-      <div class="stat"><b>320px</b><span>narrowest screen every layout holds at</span></div>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th scope="col">heuristic</th><th scope="col">problem</th><th scope="col">fix</th></tr></thead>
-        <tbody>
-          <tr><td>Visibility of system status</td><td>A failed check-in was silent for sighted users</td><td>A visible message with Sign in or Dismiss</td></tr>
-          <tr><td>Help users recover from errors</td><td>A failed load said "Loading…" forever</td><td>"Couldn't load" with a Try again button</td></tr>
-          <tr><td>Recognition rather than recall</td><td>Checking in meant going back to find the spot in the list</td><td>A check-in button on every spot's page</td></tr>
-          <tr><td>Error prevention</td><td>Leaving the page lost a half-written review</td><td>Drafts are kept until posted</td></tr>
-          <tr><td>User control and freedom</td><td>No way to delete an account</td><td>"Delete your account", listing exactly what goes</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <section class="chapter" id="iteration" aria-labelledby="iteration-h">
-    <span class="mono">06 · iteration</span>
+    <span class="mono">04 · ideation &amp; decisions</span>
     <h2 id="iteration-h">Four navigation concepts, built for real.</h2>
-    <p><strong>Why:</strong> a tester found the single long page tiring. Teams were at the top and spots far below, so changing your mind meant scrolling up and down.</p>
+    <p><strong>Why:</strong> the tester who found the long page tiring (see <a href="#research">Research</a>).</p>
     <p><strong>Every concept had to:</strong> show which step you're on, make going back easy, and require a team before showing spots.</p>
     <figure>
       <img src="/images/game-day/concepts.jpg" width="1280" height="900" loading="lazy" alt="Game Day's design concepts page: a card for each concept with a sketch of its layout, its strengths and what to watch out for">
@@ -181,7 +160,7 @@
         <p>A's progress line inside B's sticky bar, plus a button that fades in at the bottom once a team is picked.</p>
         <p class="verdict">became the live site after four rounds of refinement</p>
       </div>
-      <figure><img src="/images/game-day/team.jpg" width="1280" height="800" loading="lazy" alt="The live Team step: the step bar with Team done, and team search with My teams and sport filters"></figure>
+      <figure><img src="/images/game-day/team.jpg" width="1280" height="800" loading="lazy" alt="The live Team step: a Team, Games, Spots step bar, team search with My teams and sport filters, and a See Foghorns games button"></figure>
     </article>
 
     <h3>Small changes, each with a reason</h3>
@@ -256,9 +235,41 @@
     </article>
   </section>
 
-  <section class="chapter" id="accessibility" aria-labelledby="accessibility-h">
-    <span class="mono">07 · accessibility</span>
-    <h2 id="accessibility-h">WCAG 2.1 AA from the first draft.</h2>
+  <section class="chapter" id="design" aria-labelledby="design-h">
+    <span class="mono">05 · final design</span>
+    <h2 id="design-h">From picking a team to checking in.</h2>
+    <p>Three steps, then a spot's page. The step bar stays on top, so going back is always one tap.</p>
+    <div class="shots two">
+      <figure><img src="/images/game-day/team.jpg" width="1280" height="800" loading="lazy" alt="Team step: search by team or city, My teams and sport filters, team cards with stars, and a See Foghorns games button"><figcaption>1 · Team: search, filter, or pick a saved team.</figcaption></figure>
+      <figure><img src="/images/game-day/games.jpg" width="1280" height="800" loading="lazy" alt="Games step: Pick a game, with the Foghorns' live game and next three games as cards showing kickoff times"><figcaption>2 · Games: the live game and what's coming up.</figcaption></figure>
+      <figure><img src="/images/game-day/spots.jpg" width="1280" height="800" loading="lazy" alt="Spots step: a one-line game card, then spots with their fan counts beside a map of pins"><figcaption>3 · Spots: where the fans are, on a list and a map.</figcaption></figure>
+      <figure><img src="/images/game-day/spot-page.jpg" width="1280" height="800" loading="lazy" alt="The Tap Room's page: rating, hours, Popular with, and a game box with 22 Foghorns fans here, Sign in to check in and Switch team"><figcaption>A spot's page: check in, or switch team.</figcaption></figure>
+    </div>
+    <div class="phones four">
+      <img src="/images/game-day/m-team.jpg" width="780" height="1688" loading="lazy" alt="The Team step on a phone">
+      <img src="/images/game-day/m-games.jpg" width="780" height="1688" loading="lazy" alt="The Games step on a phone, with the live game picked and a See where Foghorns fans are button">
+      <img src="/images/game-day/m-spots.jpg" width="780" height="1688" loading="lazy" alt="The Spots step on a phone, with the game card and map">
+      <img src="/images/game-day/m-spot-page.jpg" width="780" height="1688" loading="lazy" alt="A spot's page on a phone, with Sign in to check in and Switch team side by side">
+    </div>
+
+    <h3>Edge and error states</h3>
+    <p>Each one says what happened and what to do next.</p>
+    <div class="shots">
+      <figure><img src="/images/game-day/state-load-error.jpg" width="1800" height="700" loading="lazy" alt="Spots step with a warning: We couldn't load the fan counts. The numbers below may be out of date, with a Try again button"><figcaption>Counts fail to load: the page still works, with a warning and Try again.</figcaption></figure>
+      <figure><img src="/images/game-day/state-no-teams.jpg" width="1800" height="700" loading="lazy" alt="Team search for Honolulu showing: No teams match Honolulu"><figcaption>No search results: it repeats what you typed.</figcaption></figure>
+      <figure><img src="/images/game-day/state-pick-game.jpg" width="1800" height="700" loading="lazy" alt="Going to Spots without a game: a notice, Pick a game first. Then you can see where fans are watching it, above the Games step"><figcaption>Skipping a step: Spots sends you back to pick a game first.</figcaption></figure>
+    </div>
+
+    <h3>Design system</h3>
+    <p>One orange brand color runs through a contrast engine that works out a version for text, edges and fills that passes WCAG, in dark and light mode. Two shared button styles are used 58 times across the app.</p>
+    <p>Afterward, Claude audited every screen and pulled the styles into <a href="/projects/playbook">Playbook</a>, the design system the next project starts from:</p>
+    <div class="stats">
+      <div class="stat"><b>12 → 7</b><span>text sizes became 7 named styles</span></div>
+      <div class="stat"><b>42 → 8</b><span>padding values became an 8-step spacing scale</span></div>
+      <div class="stat"><b>7 → 5</b><span>corner radii became 5 named ones</span></div>
+    </div>
+
+    <h3 id="accessibility">Accessibility: WCAG 2.1 AA from the first draft</h3>
     <div class="cards">
       <div class="card"><b>Contrast tested in code</b><p>4.5:1 for text and 3:1 for icons, in dark and light mode.</p></div>
       <div class="card"><b>Never color alone</b><p>Status and errors always have an icon and words.</p></div>
@@ -269,30 +280,40 @@
     </div>
   </section>
 
-  <section class="chapter" id="outcome" aria-labelledby="outcome-h">
-    <span class="mono">08 · outcome</span>
-    <h2 id="outcome-h">A working app, live on Google Cloud.</h2>
-    <p>Real accounts, check-ins and reviews in a real neighborhood (Somerville, MA), with 600 simulated fans so it never feels empty.</p>
+  <section class="chapter" id="evaluation" aria-labelledby="evaluation-h">
+    <span class="mono">06 · evaluation</span>
+    <h2 id="evaluation-h">No users yet, so I ran a heuristic review.</h2>
+    <p>I walked every flow as a new visitor, a returning fan and a keyboard-only user, against Nielsen's 10 usability heuristics.</p>
     <div class="stats">
-      <div class="stat"><b>4</b><span>navigation concepts built and compared</span></div>
-      <div class="stat"><b>11</b><span>usability fixes</span></div>
+      <div class="stat"><b>11</b><span>usability problems found and fixed</span></div>
+      <div class="stat"><b>3</b><span>user roles walked through every flow</span></div>
+      <div class="stat"><b>320px</b><span>narrowest screen every layout holds at</span></div>
     </div>
-    <div class="shots two">
-      <figure><img src="/images/game-day/home.jpg" width="1280" height="800" loading="lazy" alt="Game Day's Home: Welcome to Game Day, one sentence on what you can do, and a large Find your crew button"><figcaption>Home: one sentence, one action.</figcaption></figure>
-      <figure><img src="/images/game-day/spots.jpg" width="1280" height="800" loading="lazy" alt="The Spots step with the game card, list of spots and map"><figcaption>Spots: where the fans are, on a list and a map.</figcaption></figure>
-    </div>
-    <div class="phones">
-      <img src="/images/game-day/m-home.jpg" width="780" height="1688" loading="lazy" alt="Home on a phone">
-      <img src="/images/game-day/m-team.jpg" width="780" height="1688" loading="lazy" alt="The Team step on a phone">
-      <img src="/images/game-day/m-spots.jpg" width="780" height="1688" loading="lazy" alt="The Spots step on a phone, with the game card and map">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">heuristic</th><th scope="col">problem</th><th scope="col">fix</th></tr></thead>
+        <tbody>
+          <tr><td>Visibility of system status</td><td>A failed check-in was silent for sighted users</td><td>A visible message with Sign in or Dismiss</td></tr>
+          <tr><td>Help users recover from errors</td><td>A failed load said "Loading…" forever</td><td>"Couldn't load" with a Try again button</td></tr>
+          <tr><td>Recognition rather than recall</td><td>Checking in meant going back to find the spot in the list</td><td>A check-in button on every spot's page</td></tr>
+          <tr><td>Error prevention</td><td>Leaving the page lost a half-written review</td><td>Drafts are kept until posted</td></tr>
+          <tr><td>User control and freedom</td><td>No way to delete an account</td><td>"Delete your account", listing exactly what goes</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="chapter" id="next" aria-labelledby="next-h">
-    <span class="mono">09 · what's next</span>
-    <h2 id="next-h">Next: test the assumptions with real fans.</h2>
+  <section class="chapter" id="outcome" aria-labelledby="outcome-h">
+    <span class="mono">07 · outcome &amp; reflection</span>
+    <h2 id="outcome-h">Live and reviewed. Not yet tested with fans.</h2>
+    <p>Game Day runs on Google Cloud with real accounts, check-ins and reviews in a real neighborhood (Somerville, MA), and 600 simulated fans so it never feels empty. What it doesn't have yet is evidence from real fans.</p>
+    <div class="stats">
+      <div class="stat"><b>4</b><span>navigation concepts built and compared</span></div>
+      <div class="stat"><b>11</b><span>usability problems fixed</span></div>
+    </div>
+    <h3>What's next</h3>
     <ul>
-      <li><strong>Usability test</strong> with 3 to 5 fans, including a screen reader user.</li>
+      <li><strong>Usability test</strong> with 3 to 5 fans, including a screen reader user, checking the assumptions log.</li>
       <li><strong>Passkeys</strong> on Windows and Android, and with VoiceOver.</li>
       <li><strong>New features:</strong> game-night notifications, and crowd forecasts for bar owners.</li>
     </ul>

@@ -152,6 +152,9 @@ figcaption { font: 400 .8rem/1.5 var(--mono); color: var(--soft); margin-top: 10
 .shots figure { margin: 0; }
 .phones { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); max-width: 760px; margin-top: 28px; }
 .phones img { border-radius: 18px; }
+.phones.four { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+@media (min-width: 720px) { .phones.four { grid-template-columns: repeat(4, 1fr); max-width: 980px; } }
+.chapter .note { font-size: .78rem; margin-top: 10px; }
 .concept { display: grid; gap: 20px; padding: 22px; margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; }
 @media (min-width: 840px) { .concept { grid-template-columns: 1fr 1.2fr; align-items: start; } }
 .concept h3 { margin-top: 0; }
@@ -307,34 +310,28 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
 @media (min-width: 720px) and (max-width: 1099px) { .cs-nav { margin-inline: -36px; padding-inline: 36px; } }
 
 @supports (animation-timeline: view()) {
-  .cs-body { timeline-scope: --s-problem, --s-approach, --s-assumptions, --s-principles, --s-evaluation, --s-iteration, --s-accessibility, --s-outcome, --s-next; }
+  .cs-body { timeline-scope: --s-problem, --s-research, --s-principles, --s-iteration, --s-design, --s-evaluation, --s-outcome; }
   #problem { view-timeline-name: --s-problem; }
   .cs-nav li:nth-child(1) a { animation-timeline: --s-problem; }
   .cs-nav li:nth-child(1) a::before { animation-timeline: --s-problem, --s-problem; }
-  #approach { view-timeline-name: --s-approach; }
-  .cs-nav li:nth-child(2) a { animation-timeline: --s-approach; }
-  .cs-nav li:nth-child(2) a::before { animation-timeline: --s-approach, --s-approach; }
-  #assumptions { view-timeline-name: --s-assumptions; }
-  .cs-nav li:nth-child(3) a { animation-timeline: --s-assumptions; }
-  .cs-nav li:nth-child(3) a::before { animation-timeline: --s-assumptions, --s-assumptions; }
+  #research { view-timeline-name: --s-research; }
+  .cs-nav li:nth-child(2) a { animation-timeline: --s-research; }
+  .cs-nav li:nth-child(2) a::before { animation-timeline: --s-research, --s-research; }
   #principles { view-timeline-name: --s-principles; }
-  .cs-nav li:nth-child(4) a { animation-timeline: --s-principles; }
-  .cs-nav li:nth-child(4) a::before { animation-timeline: --s-principles, --s-principles; }
-  #evaluation { view-timeline-name: --s-evaluation; }
-  .cs-nav li:nth-child(5) a { animation-timeline: --s-evaluation; }
-  .cs-nav li:nth-child(5) a::before { animation-timeline: --s-evaluation, --s-evaluation; }
+  .cs-nav li:nth-child(3) a { animation-timeline: --s-principles; }
+  .cs-nav li:nth-child(3) a::before { animation-timeline: --s-principles, --s-principles; }
   #iteration { view-timeline-name: --s-iteration; }
-  .cs-nav li:nth-child(6) a { animation-timeline: --s-iteration; }
-  .cs-nav li:nth-child(6) a::before { animation-timeline: --s-iteration, --s-iteration; }
-  #accessibility { view-timeline-name: --s-accessibility; }
-  .cs-nav li:nth-child(7) a { animation-timeline: --s-accessibility; }
-  .cs-nav li:nth-child(7) a::before { animation-timeline: --s-accessibility, --s-accessibility; }
+  .cs-nav li:nth-child(4) a { animation-timeline: --s-iteration; }
+  .cs-nav li:nth-child(4) a::before { animation-timeline: --s-iteration, --s-iteration; }
+  #design { view-timeline-name: --s-design; }
+  .cs-nav li:nth-child(5) a { animation-timeline: --s-design; }
+  .cs-nav li:nth-child(5) a::before { animation-timeline: --s-design, --s-design; }
+  #evaluation { view-timeline-name: --s-evaluation; }
+  .cs-nav li:nth-child(6) a { animation-timeline: --s-evaluation; }
+  .cs-nav li:nth-child(6) a::before { animation-timeline: --s-evaluation, --s-evaluation; }
   #outcome { view-timeline-name: --s-outcome; }
-  .cs-nav li:nth-child(8) a { animation-timeline: --s-outcome; }
-  .cs-nav li:nth-child(8) a::before { animation-timeline: --s-outcome, --s-outcome; }
-  #next { view-timeline-name: --s-next; }
-  .cs-nav li:nth-child(9) a { animation-timeline: --s-next; }
-  .cs-nav li:nth-child(9) a::before { animation-timeline: --s-next, --s-next; }
+  .cs-nav li:nth-child(7) a { animation-timeline: --s-outcome; }
+  .cs-nav li:nth-child(7) a::before { animation-timeline: --s-outcome, --s-outcome; }
   /* Highlight while the section crosses the middle of the screen. */
   .cs-nav a { animation: nav-on linear none; animation-range: cover 50vh cover calc(100% - 50vh); }
   /* Dot: fills mint once you reach the section (and stays filled), and grows while you're in it. */
