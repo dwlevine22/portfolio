@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Harborlight Arena case study · David Levine</title>
+<title>3D Arena Map case study · David Levine</title>
 <meta name="description" content="How David Levine designed and built a phone-first 3D map that helps people find their way around a fictional basketball arena.">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -25,10 +25,10 @@
 
   <div class="cs-head">
     <a class="crumb mono" href="/projects">← ~/projects</a>
-    <h1>Harborlight Arena</h1>
+    <h1>3D Arena Map</h1>
     <p class="lede">Arenas are hard to find your way around. I designed and shipped a phone-first 3D map that starts from your seat or gate and walks you to what you need.</p>
     <div class="btns">
-      <a class="btn" href="https://arena-w2n4owqaca-uc.a.run.app/" target="_blank" rel="noopener">Open the arena <span class="arr" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
+      <a class="btn" href="https://arena.davidlevine.dev/" target="_blank" rel="noopener">Open the arena <span class="arr" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
     </div>
     <dl class="facts">
       <div><dt>// role</dt><dd>UX designer; I directed Claude Code, which wrote the code</dd></div>
@@ -43,7 +43,7 @@
   </div>
 
   <figure class="cs-hero">
-    <img src="/images/arena/explore.jpg" width="1280" height="800" alt="Harborlight Arena on a computer: a list of places on the left, Level 1 of the 3D arena in color with pins for food, restrooms and gates, and floor buttons on the right">
+    <img src="/images/arena.jpg" width="1280" height="800" alt="Three phone screens: exploring one floor of the 3D arena, directions to Section 313, and the walk following a blue dot along the concourse">
   </figure>
 
   <div class="cs-body">
@@ -68,7 +68,7 @@
       <div class="card"><span class="mono">// why it matters to arenas</span><p>Fans who can't find a food stand or shop can't spend there.</p></div>
     </div>
     <p class="note mono">A proto-persona: assumed, not yet checked with real fans.</p>
-    <p><strong>The setting:</strong> Harborlight Arena and its home team, the Boston Lanterns, are fictional. The map has four floors and 337 places, from gates and seating sections to restrooms.</p>
+    <p><strong>The setting:</strong> a made-up arena in no particular place, with four floors and 337 places, from gates and seating sections to restrooms.</p>
   </section>
 
   <section class="chapter" id="research" aria-labelledby="research-h">
@@ -91,7 +91,6 @@
           <tr><td>People start from a seat or an entrance</td><td>Every visit starts at one, with no From field to fill in</td><td>Ask where they'd first open it</td></tr>
           <tr><td>People explore first, then want directions</td><td>Directions appear only after picking a place</td><td>Watch what they tap first</td></tr>
           <tr><td>A short instruction is enough while walking</td><td>Each step is one line</td><td>See if they miss a turn</td></tr>
-          <tr><td>Distance matters more than minutes</td><td>No time estimate</td><td>Ask what they'd want to know before leaving their seat</td></tr>
         </tbody>
       </table>
     </div>
@@ -111,7 +110,7 @@
       <ul>
         <li>Explore and Directions tabs became one flow: pick a place, then get directions.</li>
         <li>"Step-free route" became "Accessible route", a term everyone can understand.</li>
-        <li>Distance stays; the time estimate is gone.</li>
+        <li>Distance stays. The time estimate is gone, because foot traffic can change how long a walk takes.</li>
       </ul>
     </article>
     <article class="compare">
@@ -130,9 +129,9 @@
     <article class="compare">
       <h4>Telling floors apart</h4>
       <p>Stacked floors hid each other, so I spread them out.</p>
-      <div class="pair">
-        <figure><figcaption><b>before</b> · first build</figcaption><img src="/images/arena/before-floors.jpg" width="1280" height="800" loading="lazy" alt="First build: a round arena with tightly stacked floors on a pale background with trees"></figure>
-        <figure class="after"><figcaption><b>after</b> · now</figcaption><img src="/images/arena/floors.jpg" width="1280" height="800" loading="lazy" alt="The arena now: four floors spread apart on a dark background, with a square corner, attached shops and escalators between floors"></figure>
+      <div class="pair phone">
+        <figure><figcaption><b>before</b> · first build</figcaption><img src="/images/arena/m-before-floors.jpg" width="780" height="1688" loading="lazy" alt="First build on a phone: a round arena with tightly stacked floors on a pale background with trees"></figure>
+        <figure class="after"><figcaption><b>after</b> · now</figcaption><img src="/images/arena/m-floors.jpg" width="780" height="1688" loading="lazy" alt="The arena now, on a phone: four floors spread apart on a dark background, with a square corner, attached shops and escalators between floors"></figure>
       </div>
       <ul>
         <li>Pick a floor, and the others fade to gray outlines.</li>
@@ -141,7 +140,7 @@
       </ul>
     </article>
     <article class="compare">
-      <h4>First screen on a phone</h4>
+      <h4>First screen</h4>
       <p>Less to read before you can start.</p>
       <div class="pair phone">
         <figure><figcaption><b>before</b> · first build</figcaption><img src="/images/arena/m-before-explore.jpg" width="780" height="1688" loading="lazy" alt="First build on a phone: two tabs, search, and four rows of category buttons that fill the sheet"></figure>
@@ -158,6 +157,7 @@
       <table>
         <thead><tr><th scope="col">rejected</th><th scope="col">replaced with</th><th scope="col">why</th></tr></thead>
         <tbody>
+          <tr><td>A time estimate</td><td>Distance only</td><td>Foot traffic can change how long a walk takes, and I didn't want to underestimate it</td></tr>
           <tr><td>White control panels over the map</td><td>Black, slightly see-through buttons with a white outline</td><td>The controls were too prominent</td></tr>
           <tr><td>A home icon</td><td>A zoom-all-the-way-out icon</td><td>"Home" was confusing on a map</td></tr>
           <tr><td>Separate men's and women's restrooms</td><td>One Restrooms entry</td><td>They're side by side, and the list gets shorter</td></tr>
@@ -180,10 +180,6 @@
       <figure><img src="/images/arena/m-elevator.jpg" width="780" height="1688" loading="lazy" alt="Phone: riding Elevator 3 up to Level 3, seen from the side, with the route continuing above"><figcaption>5 · Change floors: a side view shows the ride.</figcaption></figure>
       <figure><img src="/images/arena/m-arrive.jpg" width="780" height="1688" loading="lazy" alt="Phone: You've arrived at Section 313, with a Done button"><figcaption>6 · Arrive: this becomes your new start.</figcaption></figure>
     </div>
-    <figure>
-      <img src="/images/arena/walk.jpg" width="1280" height="800" loading="lazy" alt="The walk on a computer: the full list of steps on the left with the current one highlighted, and the camera following the blue dot past a restroom, a bar and a phone charging station">
-      <figcaption>On a computer, the sheet becomes a side panel, so the full list of steps stays in view.</figcaption>
-    </figure>
 
     <h3>Edge and error states</h3>
     <div class="phones four">
@@ -240,7 +236,7 @@
       <li><strong>Usability test:</strong> can people find a place and follow the walk while standing in a crowd?</li>
       <li><strong>One-finger rotating on phones.</strong> Turning the map there takes two fingers now, which not everyone can do.</li>
       <li><strong>Nearest first:</strong> sort the list by distance, now that the app has a starting point.</li>
-      <li><strong>Feet or meters?</strong> Distances are in meters, but the arena is set in Boston.</li>
+      <li><strong>Feet or meters?</strong> Distances are in meters, with no way to switch yet.</li>
     </ul>
   </section>
   </div>
@@ -249,7 +245,7 @@
   <div class="next-up">
     <h2>Want to try it?</h2>
     <div class="btns">
-      <a class="btn" href="https://arena-w2n4owqaca-uc.a.run.app/" target="_blank" rel="noopener">Open the arena <span class="arr" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
+      <a class="btn" href="https://arena.davidlevine.dev/" target="_blank" rel="noopener">Open the arena <span class="arr" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
       <a class="btn line" href="/projects">All projects</a>
     </div>
   </div>
