@@ -368,3 +368,29 @@ main { padding-bottom: 24px; }
 .glance .card .mono { display: block; color: var(--mint); margin-bottom: 6px; }
 .glance .card p { color: var(--text); }
 .learned p { color: var(--soft); }
+
+/* ---- Click an image to see it larger (case studies; lightbox.js) ---- */
+.zoom { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: 14px; background: none; color: inherit; font: inherit; text-align: inherit; cursor: zoom-in; }
+.zoom img { width: 100%; -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+.phones .zoom { border-radius: 18px; }
+.cs-hero .zoom { border-radius: 20px; }
+.cs-hero .zoom:focus-visible { outline-offset: -4px; border-radius: 20px; }
+.lightbox-open { overflow: hidden; }
+.lightbox { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 20px; border: 0; background: rgba(6,7,10,.92); overflow: hidden; cursor: zoom-out; touch-action: pinch-zoom; -webkit-user-select: none; user-select: none; overscroll-behavior: contain; }
+.lightbox[open] { display: grid; place-items: center; }
+.lightbox::backdrop { background: transparent; }
+.lightbox img { max-width: calc(100vw - 40px); max-height: calc(100vh - 40px); max-height: calc(100dvh - 40px); width: auto; height: auto; object-fit: contain; border-radius: 14px; border: 1px solid var(--line-hi); -webkit-user-drag: none; -webkit-touch-callout: none; }
+/* Phones: room above the image for the close button, so it never covers the picture. */
+@media (max-width: 719px) { .lightbox { padding: 10px; } .lightbox img { max-width: calc(100vw - 20px); max-height: calc(100vh - 148px); max-height: calc(100dvh - 148px); } }
+.lightbox-close { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; display: grid; place-items: center; padding: 0; border-radius: 50%; color: var(--text); background: rgba(13,14,19,.88); border: 1px solid var(--soft); cursor: pointer; transition: color .2s var(--ease), border-color .2s var(--ease); }
+.lightbox-close:hover { color: var(--mint); border-color: var(--mint); }
+.lightbox-close:focus-visible { border-radius: 50%; }
+.lightbox[open] { animation: lightbox-fade .25s var(--ease) both; }
+.lightbox[open] img { animation: lightbox-grow .3s var(--ease) both; }
+.lightbox.closing { animation: lightbox-out .2s var(--ease) both; }
+.lightbox.closing img { animation: lightbox-shrink .2s var(--ease) both; }
+@keyframes lightbox-fade { from { opacity: 0; } }
+@keyframes lightbox-out { to { opacity: 0; } }
+@keyframes lightbox-grow { from { transform: scale(.94); } }
+@keyframes lightbox-shrink { to { transform: scale(.96); } }
+@media (prefers-reduced-motion: reduce) { .lightbox, .lightbox * { animation: none !important; transition: none !important; } }
