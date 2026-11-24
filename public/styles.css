@@ -152,6 +152,9 @@ figcaption { font: 400 .8rem/1.5 var(--mono); color: var(--soft); margin-top: 10
 .shots figure { margin: 0; }
 .phones { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); max-width: 760px; margin-top: 28px; }
 .phones img { border-radius: 18px; }
+.phones figure { margin: 0; }
+.phones.flow { gap: 24px 14px; }
+@media (max-width: 559px) { .phones.flow { grid-template-columns: repeat(2, 1fr); } }
 .phones.four { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
 @media (min-width: 720px) { .phones.four { grid-template-columns: repeat(4, 1fr); max-width: 980px; } }
 .chapter .note { font-size: .78rem; margin-top: 10px; }
@@ -168,7 +171,7 @@ figcaption { font: 400 .8rem/1.5 var(--mono); color: var(--soft); margin-top: 10
 .compare > p { margin: 0; font-size: .95rem; }
 .compare .pair { display: grid; gap: 14px; margin-top: 18px; }
 @media (min-width: 840px) { .compare .pair { grid-template-columns: 1fr 1fr; } }
-.compare .pair.phone { grid-template-columns: 1fr 1fr; max-width: 520px; }
+.compare .pair.phone { grid-template-columns: 1fr 1fr; max-width: 520px; align-items: end; }
 .compare figure { margin: 0; }
 .compare figcaption { margin: 0 0 8px; }
 .compare figcaption b { font-weight: 500; color: var(--text); }
@@ -310,28 +313,35 @@ footer a:hover::after, .crumb:hover::after, footer a:focus-visible::after { tran
 @media (min-width: 720px) and (max-width: 1099px) { .cs-nav { margin-inline: -36px; padding-inline: 36px; } }
 
 @supports (animation-timeline: view()) {
-  .cs-body { timeline-scope: --s-problem, --s-research, --s-principles, --s-iteration, --s-design, --s-evaluation, --s-outcome; }
-  #problem { view-timeline-name: --s-problem; }
-  .cs-nav li:nth-child(1) a { animation-timeline: --s-problem; }
-  .cs-nav li:nth-child(1) a::before { animation-timeline: --s-problem, --s-problem; }
-  #research { view-timeline-name: --s-research; }
-  .cs-nav li:nth-child(2) a { animation-timeline: --s-research; }
-  .cs-nav li:nth-child(2) a::before { animation-timeline: --s-research, --s-research; }
-  #principles { view-timeline-name: --s-principles; }
-  .cs-nav li:nth-child(3) a { animation-timeline: --s-principles; }
-  .cs-nav li:nth-child(3) a::before { animation-timeline: --s-principles, --s-principles; }
-  #iteration { view-timeline-name: --s-iteration; }
-  .cs-nav li:nth-child(4) a { animation-timeline: --s-iteration; }
-  .cs-nav li:nth-child(4) a::before { animation-timeline: --s-iteration, --s-iteration; }
-  #design { view-timeline-name: --s-design; }
-  .cs-nav li:nth-child(5) a { animation-timeline: --s-design; }
-  .cs-nav li:nth-child(5) a::before { animation-timeline: --s-design, --s-design; }
-  #evaluation { view-timeline-name: --s-evaluation; }
-  .cs-nav li:nth-child(6) a { animation-timeline: --s-evaluation; }
-  .cs-nav li:nth-child(6) a::before { animation-timeline: --s-evaluation, --s-evaluation; }
-  #outcome { view-timeline-name: --s-outcome; }
-  .cs-nav li:nth-child(7) a { animation-timeline: --s-outcome; }
-  .cs-nav li:nth-child(7) a::before { animation-timeline: --s-outcome, --s-outcome; }
+  /* Matched by position (first section, first step, and so on), so each case study can name its own sections. Up to 9. */
+  .cs-body { timeline-scope: --s-1, --s-2, --s-3, --s-4, --s-5, --s-6, --s-7, --s-8, --s-9; }
+  .cs-content > .chapter:nth-of-type(1) { view-timeline-name: --s-1; }
+  .cs-nav li:nth-child(1) a { animation-timeline: --s-1; }
+  .cs-nav li:nth-child(1) a::before { animation-timeline: --s-1, --s-1; }
+  .cs-content > .chapter:nth-of-type(2) { view-timeline-name: --s-2; }
+  .cs-nav li:nth-child(2) a { animation-timeline: --s-2; }
+  .cs-nav li:nth-child(2) a::before { animation-timeline: --s-2, --s-2; }
+  .cs-content > .chapter:nth-of-type(3) { view-timeline-name: --s-3; }
+  .cs-nav li:nth-child(3) a { animation-timeline: --s-3; }
+  .cs-nav li:nth-child(3) a::before { animation-timeline: --s-3, --s-3; }
+  .cs-content > .chapter:nth-of-type(4) { view-timeline-name: --s-4; }
+  .cs-nav li:nth-child(4) a { animation-timeline: --s-4; }
+  .cs-nav li:nth-child(4) a::before { animation-timeline: --s-4, --s-4; }
+  .cs-content > .chapter:nth-of-type(5) { view-timeline-name: --s-5; }
+  .cs-nav li:nth-child(5) a { animation-timeline: --s-5; }
+  .cs-nav li:nth-child(5) a::before { animation-timeline: --s-5, --s-5; }
+  .cs-content > .chapter:nth-of-type(6) { view-timeline-name: --s-6; }
+  .cs-nav li:nth-child(6) a { animation-timeline: --s-6; }
+  .cs-nav li:nth-child(6) a::before { animation-timeline: --s-6, --s-6; }
+  .cs-content > .chapter:nth-of-type(7) { view-timeline-name: --s-7; }
+  .cs-nav li:nth-child(7) a { animation-timeline: --s-7; }
+  .cs-nav li:nth-child(7) a::before { animation-timeline: --s-7, --s-7; }
+  .cs-content > .chapter:nth-of-type(8) { view-timeline-name: --s-8; }
+  .cs-nav li:nth-child(8) a { animation-timeline: --s-8; }
+  .cs-nav li:nth-child(8) a::before { animation-timeline: --s-8, --s-8; }
+  .cs-content > .chapter:nth-of-type(9) { view-timeline-name: --s-9; }
+  .cs-nav li:nth-child(9) a { animation-timeline: --s-9; }
+  .cs-nav li:nth-child(9) a::before { animation-timeline: --s-9, --s-9; }
   /* Highlight while the section crosses the middle of the screen. */
   .cs-nav a { animation: nav-on linear none; animation-range: cover 50vh cover calc(100% - 50vh); }
   /* Dot: fills mint once you reach the section (and stays filled), and grows while you're in it. */
