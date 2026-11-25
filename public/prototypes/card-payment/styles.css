@@ -408,6 +408,35 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
   .sheet-foot .btn-primary { min-height: 48px; }
 }
 
+/* ---------- Typing in Other with the phone keypad up (see fitKeypad) ---------- */
+.kb .phone { position: fixed; left: 0; right: 0; top: var(--kb-top); height: var(--kb-h); }
+.kb .sheet-amount { max-height: 100%; border-radius: 18px 18px 0 0; }
+.kb .sheet-amount .sheet-grab { display: none; }
+.kb .sheet-amount .sheet-header { padding: 0 12px; }
+.kb .calc { padding: 0 20px 6px; }
+.kb .bar { height: 20px; margin: 2px 0 6px; border-radius: 7px; }
+.kb .bar-prompt { font-size: 12px; }
+.kb .calc-total { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; column-gap: 6px; padding-top: 4px; min-height: 42px; }
+.kb .total { font-size: 16px; line-height: 22px; }
+.kb .over { font-size: 14px; line-height: 22px; }
+.kb .basis { flex-basis: 100%; font-size: 12px; line-height: 16px; }
+.kb .cards, .kb .about-toggle, .kb .about-wrap { display: none; }
+.kb .sheet-amount .sheet-body { flex: none; padding: 8px 20px 4px; }
+.kb .other { margin: 0; animation: none; }
+.kb .other-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.kb .money-input { height: 44px; }
+.kb .other-hint { margin-top: 2px; font-size: 13px; }
+.kb .sheet-foot { padding: 6px 20px 8px; }
+.kb .sheet-foot .btn-primary { min-height: 44px; }
+.kb-tiny .calc-labels, .kb-tiny .basis { display: none; }
+.kb-tiny .calc-total { min-height: 26px; }
+.kb-tiny .calc-total.is-bad .over { display: none; }
+.kb-tiny .calc { padding-bottom: 2px; }
+.kb-tiny .calc-total { padding-top: 0; }
+.kb-tiny .sheet-body.sheet-body { padding: 4px 20px 2px; }
+.kb-tiny .other-hint { font-size: 12px; line-height: 16px; min-height: 16px; margin: 1px -10px 0 0; white-space: nowrap; }
+.kb-tiny .other-hint:empty { min-height: 0; margin: 0; }
+
 .about-toggle {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: 4px; padding: 8px 0; min-height: 44px;

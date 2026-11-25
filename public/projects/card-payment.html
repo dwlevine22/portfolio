@@ -68,7 +68,10 @@
     <span class="mono">01 · problem &amp; context</span>
     <h2 id="problem-h">The cost is on the statement. The choice is somewhere else.</h2>
     <p>I reviewed my own Capital One app and my January 2026 statement. The statement says how long paying only the minimum takes and what it adds up to. The two app screens where I'd pick an amount didn't show any cost.</p>
-    <figure class="narrow"><img src="/images/card/statement.jpg" width="750" height="476" loading="lazy" alt="The statement's Payment Information box: a Minimum Payment Warning and a one-row table saying how long paying only the minimum takes and the estimated total, with my numbers blacked out"><figcaption>The statement's warning, with my numbers covered. Neither app screen I reviewed repeats it.</figcaption></figure>
+    <div class="evidence">
+      <figure><img src="/images/card/statement.jpg" width="750" height="476" loading="lazy" alt="The statement's Payment Information box: a Minimum Payment Warning and a one-row table saying how long paying only the minimum takes and the estimated total, with my numbers blacked out"><figcaption>The statement: what paying only the minimum takes and adds up to. My numbers are covered.</figcaption></figure>
+      <figure><img src="/images/card/before-select.jpg" width="772" height="1676" loading="lazy" alt="Capital One's Select amount screen: four amounts, covered, labeled Last statement balance, Current balance, Last posted payment and Minimum payment, with Other amount and About payment options, and no cost shown"><figcaption>Capital One's Select amount: no cost beside any option.</figcaption></figure>
+    </div>
     <div class="cards glance">
       <div class="card"><span class="mono">// who it's for</span><p>Someone who can't or won't pay in full this month, choosing an amount on their phone.</p></div>
       <div class="card"><span class="mono">// why it matters to them</span><p>The amount they choose decides how long the debt lasts and how much interest they pay.</p></div>
@@ -198,6 +201,7 @@
           <tr><td>Sliding, dragging popups, Tab and Escape, in simulated Chrome</td><td>Pass</td></tr>
           <tr><td>A slide that gets interrupted</td><td>Found a bug: it could have paid. Fixed, so it now cancels</td></tr>
           <tr><td>The calendar on a 320-pixel screen</td><td>Found a bug: it ran off the edge. Fixed</td></tr>
+          <tr><td>The phone keypad covering the Other box and its button</td><td>Found a problem and fixed it: both now stay above a simulated keypad</td></tr>
           <tr><td>A real phone, and a screen reader</td><td>Not tested yet</td></tr>
           <tr><td>Whether people understand the cost, or pay differently</td><td>Not tested yet</td></tr>
         </tbody>

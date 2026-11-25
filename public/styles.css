@@ -433,4 +433,7 @@ main { padding-bottom: 24px; }
 .proto-overlay.keypad iframe { max-height: none; border-radius: 0; }
 .proto-overlay.keypad::backdrop { background: #06070a; }
 @media (prefers-reduced-motion: reduce) { .proto-overlay { animation: none !important; } .proto .still:hover { transform: none; } }
-figure.narrow { max-width: 560px; }
+.evidence { display: grid; gap: 22px; margin-top: 28px; align-items: start; }
+@media (min-width: 720px) { .evidence { grid-template-columns: 1.7fr 1fr; } }
+.evidence figure { margin: 0; }
+.evidence figure:last-child { max-width: 300px; }

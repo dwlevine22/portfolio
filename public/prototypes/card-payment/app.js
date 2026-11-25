@@ -238,6 +238,33 @@
     if (e.key === 'Enter') { e.preventDefault(); if (!useAmount.disabled) useAmount.click(); }
   });
 
+  // ---------- Room for the phone keypad ----------
+  // While Other is being typed in a short space, the cards step aside so the chart, the field
+  // and the button all stay above the keypad. Inside a frame, the page that holds it resizes the
+  // frame; on its own, the visual viewport says how much is left.
+  const framed = window.parent !== window;
+  const vv = window.visualViewport;
+  const root = document.documentElement;
+  let typingEnds;
+
+  function fitKeypad() {
+    const h = Math.round(framed || !vv ? window.innerHeight : vv.height);
+    const on = document.activeElement === otherInput && h < 560 && window.innerWidth <= 500;
+    if (on) {
+      root.style.setProperty('--kb-h', `${h}px`);
+      root.style.setProperty('--kb-top', `${framed || !vv ? 0 : Math.round(vv.offsetTop)}px`);
+    }
+    root.classList.toggle('kb', on);
+    root.classList.toggle('kb-tiny', on && (h < 310 || (h < 345 && window.innerWidth <= 340)));
+    if (on) sheet.querySelector('.sheet-body').scrollTop = 0;
+  }
+  otherInput.addEventListener('focus', () => { clearTimeout(typingEnds); fitKeypad(); });
+  // wait, so a tap on the button isn't lost because the layout moved under it
+  otherInput.addEventListener('blur', () => { typingEnds = setTimeout(fitKeypad, 300); });
+  useAmount.addEventListener('mousedown', (e) => e.preventDefault()); // keep the field focused until the click lands
+  window.addEventListener('resize', fitKeypad);
+  if (vv) { vv.addEventListener('resize', fitKeypad); vv.addEventListener('scroll', fitKeypad); }
+
   function showOtherError(msg) {
     other.classList.toggle('is-invalid', !!msg);
     otherInput.setAttribute('aria-invalid', String(!!msg));
