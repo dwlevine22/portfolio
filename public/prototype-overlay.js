@@ -31,6 +31,26 @@
     dialog.classList.add("closing");
     setTimeout(() => dialog.close(), 200);
   }
+  // Phones: while the keypad is up, fit the overlay to the space above it, so the prototype can keep its text box
+  // and button in view. Pinch-zooming also shrinks the visible area, so that's left alone.
+  const vv = window.visualViewport;
+  function fitKeypad() {
+    if (!vv || !dialog.open || vv.scale > 1.01) return;
+    const up = root.clientHeight - vv.height > 120;
+    dialog.classList.toggle("keypad", up);
+    if (up) {
+      dialog.style.setProperty("--vv-h", `${vv.height}px`);
+      dialog.style.setProperty("--vv-top", `${vv.offsetTop}px`);
+    } else clearKeypad();
+  }
+  function clearKeypad() {
+    dialog.classList.remove("keypad");
+    dialog.style.removeProperty("--vv-h");
+    dialog.style.removeProperty("--vv-top");
+  }
+  vv?.addEventListener("resize", fitKeypad);
+  vv?.addEventListener("scroll", fitKeypad);
+
   // Escape pressed inside the prototype: it closes its own popup first; if there wasn't one, close this overlay.
   frame.addEventListener("load", () => {
     try {
@@ -47,6 +67,7 @@
     dialog.classList.remove("closing");
     root.classList.remove("lightbox-open");
     document.body.style.paddingRight = "";
+    clearKeypad();
   });
   links.forEach((link) => link.addEventListener("click", (e) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; // let people open it in a new tab

@@ -427,4 +427,10 @@ main { padding-bottom: 24px; }
   .proto-bar { padding: 6px 10px 6px 16px; }
   .proto-overlay iframe { width: 100%; max-height: none; border-radius: 0; }
 }
+/* Keypad up: only the space above it, with the top bar tucked away so the prototype gets all of it. */
+.proto-overlay.keypad { top: var(--vv-top, 0px); bottom: auto; height: var(--vv-h, 100dvh); padding: 0; grid-template-rows: minmax(0, 1fr); gap: 0; }
+.proto-overlay.keypad .proto-bar { display: none; }
+.proto-overlay.keypad iframe { max-height: none; border-radius: 0; }
+.proto-overlay.keypad::backdrop { background: #06070a; }
 @media (prefers-reduced-motion: reduce) { .proto-overlay { animation: none !important; } .proto .still:hover { transform: none; } }
+figure.narrow { max-width: 560px; }
