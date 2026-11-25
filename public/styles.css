@@ -394,3 +394,12 @@ main { padding-bottom: 24px; }
 @keyframes lightbox-grow { from { transform: scale(.94); } }
 @keyframes lightbox-shrink { to { transform: scale(.96); } }
 @media (prefers-reduced-motion: reduce) { .lightbox, .lightbox * { animation: none !important; transition: none !important; } }
+
+/* ---- Two short lists side by side (a flow before and after) ---- */
+.pair-lists { display: grid; gap: 14px; margin-top: 20px; }
+@media (min-width: 720px) { .pair-lists { grid-template-columns: 1fr 1fr; } }
+.pair-lists > div { padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; }
+.pair-lists > .after { border-color: var(--mint); }
+.pair-lists .after .mono { color: var(--mint); }
+.pair-lists ol { margin: 12px 0 0; padding-left: 1.3em; display: grid; gap: 6px; }
+.pair-lists li::marker { color: var(--mint); }

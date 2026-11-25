@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Payment Redesign case study · David Levine</title>
+<meta name="description" content="An unsolicited redesign of Capital One's payment flow, plus a new feature that shows what a payment costs while you choose it.">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css?v=2">
+<script src="/case-study-nav.js?v=2" defer></script>
+<script src="/lightbox.js?v=2" defer></script>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><b>~/</b>davidlevine.dev</a>
+  <nav aria-label="Main">
+    <a href="/">Home</a>
+    <a href="/projects" aria-current="page">Projects</a>
+    <a href="/about">About</a>
+  </nav>
+</div></header>
+<main id="main" class="wrap">
+
+  <div class="cs-head">
+    <a class="crumb mono" href="/projects">← ~/projects</a>
+    <h1>Card Payment Redesign</h1>
+    <p class="lede">The two Capital One payment screens I reviewed ask how much to pay without showing what that choice costs. I'm redesigning the payment flow and adding a feature that shows the cost while you choose.</p>
+    <dl class="facts">
+      <div><dt>// role</dt><dd>UX designer; I directed Claude Code, which wrote the code</dd></div>
+      <div><dt>// status</dt><dd>In progress: first build working, amount step being redesigned</dd></div>
+      <div><dt>// platform</dt><dd>Mobile app flow, as a web prototype</dd></div>
+      <div><dt>// tools</dt><dd>Pencil and paper, Claude Code, HTML, CSS and JavaScript</dd></div>
+    </dl>
+    <div class="cards glance">
+      <div class="card"><span class="mono">// the redesign</span><p>The payment flow, reordered: amount before date, with the balance and due date where you need them.</p></div>
+      <div class="card"><span class="mono">// the new feature</span><p>What each amount costs, shown at the moment you choose it.</p></div>
+      <div class="card"><span class="mono">// outcome so far</span><p>A working first build and sketches for the next one. Not yet tested with people.</p></div>
+    </div>
+    <p class="note mono">An unsolicited concept. Not affiliated with or endorsed by Capital One. The prototype is unbranded, and its card, accounts and amounts are made up.</p>
+  </div>
+
+  <div class="cs-body">
+  <nav class="cs-nav" aria-label="Case study sections">
+    <ol>
+      <li><a href="#problem"><span class="n">01</span><span class="t">Problem</span></a></li>
+      <li><a href="#research"><span class="n">02</span><span class="t">Research</span></a></li>
+      <li><a href="#ideation"><span class="n">03</span><span class="t">Ideation</span></a></li>
+      <li><a href="#design"><span class="n">04</span><span class="t">Final design</span></a></li>
+      <li><a href="#outcome"><span class="n">05</span><span class="t">Outcome</span></a></li>
+    </ol>
+  </nav>
+  <div class="cs-content">
+
+  <section class="chapter" id="problem" aria-labelledby="problem-h">
+    <span class="mono">01 · problem &amp; context</span>
+    <h2 id="problem-h">The cost is on the statement. The choice is somewhere else.</h2>
+    <p>I reviewed my own Capital One app and my January 2026 statement. The statement says how long paying only the minimum takes and what it adds up to. The two app screens where I'd pick an amount didn't show any cost.</p>
+    <div class="cards glance">
+      <div class="card"><span class="mono">// who it's for</span><p>Someone who can't or won't pay in full this month, choosing an amount on their phone.</p></div>
+      <div class="card"><span class="mono">// why it matters to them</span><p>The amount they choose decides how long the debt lasts and how much interest they pay.</p></div>
+      <div class="card"><span class="mono">// why it's hard for a bank</span><p>Interest is income. A design that helps customers pay less of it needs a reason the bank would want it, such as trust.</p></div>
+    </div>
+    <p class="note mono">A proto-persona: assumed, not yet checked with real cardholders.</p>
+    <h3>What works already</h3>
+    <p>I kept a lot on purpose. The layout is simple and easy to read, contrast is strong, nothing is preselected, and Slide to pay helps prevent accidental payments.</p>
+    <h3>What I'm changing</h3>
+    <div class="pair-lists">
+      <div><span class="mono">before · Capital One's order</span>
+        <ol><li>Pay to</li><li>Pay from</li><li>Pay on (date)</li><li>Amount, grayed out until a date is picked</li><li>Slide to pay</li></ol></div>
+      <div class="after"><span class="mono">after · my order</span>
+        <ol><li>Pay to, with the balance beside it</li><li>Pay from</li><li>Payment amount, with what it costs</li><li>Pay date, starting on today</li><li>Slide to pay</li></ol></div>
+    </div>
+    <p class="note mono">My account showed no payment due, so someone with a payment due may see something different.</p>
+  </section>
+
+  <section class="chapter" id="research" aria-labelledby="research-h">
+    <span class="mono">02 · research &amp; synthesis</span>
+    <h2 id="research-h">Showing the cost isn't automatically enough.</h2>
+    <p>I haven't interviewed cardholders. I used published studies, public data, and a close review of one real payment flow. Claude gathered the sources.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">what I found</th><th scope="col">source</th><th scope="col">what it means here</th></tr></thead>
+        <tbody>
+          <tr><td>About 15% of general-purpose card accounts paid only the minimum in a given cycle</td><td>CFPB, 2025 report (2024 data)</td><td>The minimum is a common choice, worth designing for</td></tr>
+          <tr><td>People shown a minimum repaid less: £99 on average, against £175 without it</td><td>Stewart, 2009 (mock bill)</td><td>The numbers on screen can shape the choice</td></tr>
+          <tr><td>The US statement warning moved about 0.4 percentage points of accounts to the 36-month amount</td><td>Agarwal and others, 2015</td><td>This warning, on its own, did little</td></tr>
+          <tr><td>Removing the minimum from a direct debit setup changed choices, but not total repayments over 7 months</td><td>FCA field trial, 2018</td><td>Measure what people pay, not just what they tap</td></tr>
+          <tr><td>Apple Card already estimates interest for the amount you pick</td><td>Apple</td><td>The idea isn't new; the way it's explained has to earn its place</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>The insight that shaped the design</h3>
+    <p class="big-quote">The cost exists. It just isn't where the decision happens.</p>
+    <p>Moving it there is my bet, not a proven fix. Studies of cost warnings found small effects, so this needs a real test before I'd claim it helps.</p>
+  </section>
+
+  <section class="chapter" id="ideation" aria-labelledby="ideation-h">
+    <span class="mono">03 · ideation &amp; decisions</span>
+    <h2 id="ideation-h">From a line of text to a picture of the cost.</h2>
+    <p>I started on paper. The first sketch put the amount before the date and the balance next to the card, so you don't have to go back to check it.</p>
+    <div class="phones flow">
+      <figure><img src="/images/card/sketch-1-make-a-payment.jpg" width="772" height="1370" loading="lazy" alt="Pencil sketch: Make a payment, with the card and a balance of $1,840.68, pay from, payment amount, pay date with a calendar icon, and slide to pay"><figcaption>Sketch 1 · The main screen, amount first.</figcaption></figure>
+      <figure><img src="/images/card/sketch-2-select-amount.jpg" width="720" height="1334" loading="lazy" alt="Pencil sketch: Select amount with four options, an Other amount text box, a Total payment calculator link and About payment options"><figcaption>Sketch 2 · Simpler options, plus a calculator.</figcaption></figure>
+      <figure><img src="/images/card/sketch-3-total-payment-calculator.jpg" width="678" height="1378" loading="lazy" alt="Pencil sketch: Total payment calculator with a bar split into payment, balance and interest, the APR, a total over time, and amount cards"><figcaption>Sketch 3 · The calculator: payment, balance and interest in one bar.</figcaption></figure>
+    </div>
+
+    <h3>Round 1: explain each amount in words</h3>
+    <p>The first build put a cost line under every option, then a small table under the amount you chose.</p>
+    <div class="phones flow">
+      <figure><img src="/images/card/first-amounts.jpg" width="780" height="1688" loading="lazy" alt="First build: Select amount, each option with a line saying whether it avoids interest or how long it takes to pay off"><figcaption>First build · A cost line under each option.</figcaption></figure>
+      <figure><img src="/images/card/first-cost.jpg" width="780" height="1688" loading="lazy" alt="First build: $250 selected, with a one-row table showing the time to pay off and the total"><figcaption>First build · One row for the amount you chose.</figcaption></figure>
+    </div>
+    <h3>Round 2: show it instead</h3>
+    <p>I'm replacing those lines with a total payment calculator (sketches 2 and 3). It borrows the bar people know from checking phone storage: your payment, the balance that's left, and the interest added along the way. I'm deciding whether it becomes the amount screen itself.</p>
+
+    <h3>What changed, and why</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">first idea</th><th scope="col">now</th><th scope="col">why</th></tr></thead>
+        <tbody>
+          <tr><td>Date before amount</td><td>Amount first</td><td>Claude pointed out the odd order. I agreed: how much to pay matters more</td></tr>
+          <tr><td>A three-row comparison table</td><td>Only the amount you chose</td><td>The numbers speak for themselves</td></tr>
+          <tr><td>Other amount on a separate screen</td><td>Typed right in the list</td><td>No extra screen; it stays locked until the amount is valid</td></tr>
+          <tr><td>Buttons for picking a date</td><td>Today, plus a scrollable calendar</td><td>Claude added the buttons; my sketch had a calendar, with the due date marked</td></tr>
+          <tr><td>Removing one preset amount</td><td>Keeping all four</td><td>I went back to the original options</td></tr>
+          <tr><td>A Capital One redesign, start to finish</td><td>A hybrid: the case study names the product, the demo is unbranded</td><td>A working copy of a real bank's screen could be mistaken for the bank's own</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="chapter" id="design" aria-labelledby="design-h">
+    <span class="mono">04 · final design &amp; prototype</span>
+    <h2 id="design-h">What's settled so far.</h2>
+    <p>These parts of the first build are staying. The amount step in between is being redesigned, so it isn't shown as final.</p>
+    <div class="phones flow">
+      <figure><img src="/images/card/start.jpg" width="780" height="1688" loading="lazy" alt="Make a payment: card with its current balance, pay from, Select amount, pay date set to today, and a locked Slide to pay"><figcaption>Balance up front, amount before date.</figcaption></figure>
+      <figure><img src="/images/card/calendar.jpg" width="780" height="1688" loading="lazy" alt="Pay date calendar with today selected and Nov 30 outlined and labeled Due"><figcaption>Pay date: the due date is marked.</figcaption></figure>
+      <figure><img src="/images/card/done.jpg" width="780" height="1688" loading="lazy" alt="Payment scheduled: $1,612.40, with the card, account and date"><figcaption>A clear confirmation.</figcaption></figure>
+    </div>
+    <h3>Edge and error states</h3>
+    <div class="phones four">
+      <figure><img src="/images/card/state-over.jpg" width="780" height="1688" loading="lazy" alt="Other amount of $3000 in red: Enter an amount up to your current balance of $1,840.68"><figcaption>Over the balance: locked until it's fixed.</figcaption></figure>
+      <figure><img src="/images/card/state-low.jpg" width="780" height="1688" loading="lazy" alt="$30 selected: a warning that it is less than the minimum, and a table saying Never and Keeps growing"><figcaption>Too low: a late-fee warning, and it never pays off.</figcaption></figure>
+      <figure><img src="/images/card/state-late.jpg" width="780" height="1688" loading="lazy" alt="A pay date of Dec 3 with warnings about interest and a late fee"><figcaption>After the due date: says what it could cost.</figcaption></figure>
+      <figure><img src="/images/card/no-interest.jpg" width="780" height="1688" loading="lazy" alt="$1,612.40 selected, with a green note saying no interest if paid by Nov 30"><figcaption>Enough to avoid interest: says so, plainly.</figcaption></figure>
+    </div>
+    <h3>Design system</h3>
+    <div class="cards">
+      <div class="card"><b>Blue means you can act</b><p>One blue for links, the calendar, the slider and the chosen date.</p></div>
+      <div class="card"><b>Status has words</b><p>Green, amber and red notes always come with an icon and a sentence.</p></div>
+      <div class="card"><b>Motion with a job</b><p>Popups slide up and down, and can be dragged closed.</p></div>
+    </div>
+    <h3>Accessibility</h3>
+    <div class="cards">
+      <div class="card"><b>Sliding isn't required</b><p>Press Enter on Slide to pay instead. A plain tap doesn't pay.</p></div>
+      <div class="card"><b>Contrast, measured</b><p>11 of 12 sampled text styles are at least 4.5:1. The other is the grayed-out Slide to pay, at 4.39:1.</p></div>
+      <div class="card"><b>Small screens</b><p>Laid out and checked at 320, 375 and 390 pixels wide.</p></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="outcome" aria-labelledby="outcome-h">
+    <span class="mono">05 · testing, outcome &amp; reflection</span>
+    <h2 id="outcome-h">Built and checked. Not yet tested with people.</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">checked</th><th scope="col">result</th></tr></thead>
+        <tbody>
+          <tr><td>Sliding, dragging popups, Tab and Escape, in simulated Chrome</td><td>Pass</td></tr>
+          <tr><td>A slide that gets interrupted</td><td>Found a bug: it could have paid. Fixed, so it now cancels</td></tr>
+          <tr><td>The calendar on a 320-pixel screen</td><td>Found a bug: it ran off the edge. Fixed</td></tr>
+          <tr><td>A real phone, and a screen reader</td><td>Not tested yet</td></tr>
+          <tr><td>Whether people understand the cost, or pay differently</td><td>Not tested yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>What's next</h3>
+    <ul>
+      <li><strong>Build the calculator</strong> and settle how the bar is scaled, so a longer payoff looks longer.</li>
+      <li><strong>Word the minimum carefully.</strong> It shrinks as the balance does, so "the same amount every month" doesn't describe it.</li>
+      <li><strong>Add a second situation:</strong> someone already carrying a balance from an earlier statement.</li>
+      <li><strong>Test it</strong> with cardholders, and compare what they'd pay, not just what they say.</li>
+    </ul>
+  </section>
+  </div>
+  </div>
+
+  <div class="next-up">
+    <h2>More of my work</h2>
+    <div class="btns"><a class="btn" href="/projects">All projects <span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+</main>
+<footer><div class="wrap">
+  <span class="mono">© 2026 David Levine</span>
+  <ul class="mono">
+    <li><a href="mailto:dwlevine22@gmail.com">email</a></li>
+    <li><a href="https://github.com/dwlevine22" target="_blank" rel="noopener">github<span class="vh"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.linkedin.com/in/davidwlevine/" target="_blank" rel="noopener">linkedin<span class="vh"> (opens in a new tab)</span></a></li>
+    <li><a href="https://drive.google.com/file/d/1WdOb0dCheoO40RHfO2dALUa9t2qTbsix/view?usp=sharing" target="_blank" rel="noopener">résumé.pdf<span class="vh"> (opens in a new tab)</span></a></li>
+  </ul>
+</div></footer>
+<a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</body>
+</html>
