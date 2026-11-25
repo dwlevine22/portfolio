@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Card Payment Redesign case study · David Levine</title>
-<meta name="description" content="An unsolicited redesign of Capital One's payment flow, plus a new feature that shows what a payment costs while you choose it.">
+<meta name="description" content="A credit card payment flow redesign, plus a new feature that shows what a payment costs while you choose it.">
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -28,7 +28,7 @@
   <div class="cs-head">
     <a class="crumb mono" href="/projects">← ~/projects</a>
     <h1>Card Payment Redesign</h1>
-    <p class="lede">The two Capital One payment screens I reviewed ask how much to pay without showing what that choice costs. I'm redesigning the payment flow and adding a feature that shows the cost while you choose.</p>
+    <p class="lede">Paying a credit card means choosing an amount, often without seeing what that choice costs. I'm redesigning the payment flow and adding a feature that shows the cost while you choose.</p>
     <dl class="facts">
       <div><dt>// role</dt><dd>UX designer; I directed Claude Code, which wrote the code</dd></div>
       <div><dt>// status</dt><dd>In progress: first build working, amount step being redesigned</dd></div>
@@ -40,7 +40,7 @@
       <div class="card"><span class="mono">// the new feature</span><p>What each amount costs, shown at the moment you choose it.</p></div>
       <div class="card"><span class="mono">// outcome so far</span><p>A working first build and sketches for the next one. Not yet tested with people.</p></div>
     </div>
-    <p class="note mono">An unsolicited concept. Not affiliated with or endorsed by Capital One. The prototype is unbranded, and its card, accounts and amounts are made up.</p>
+    <p class="note mono">An unsolicited concept, using Capital One's app as its reference. Not affiliated with or endorsed by Capital One. The prototype is unbranded, and its card, accounts and amounts are made up.</p>
   </div>
 
   <div class="cs-body">
@@ -86,7 +86,7 @@
         <thead><tr><th scope="col">what I found</th><th scope="col">source</th><th scope="col">what it means here</th></tr></thead>
         <tbody>
           <tr><td>About 15% of general-purpose card accounts paid only the minimum in a given cycle</td><td>CFPB, 2025 report (2024 data)</td><td>The minimum is a common choice, worth designing for</td></tr>
-          <tr><td>People shown a minimum repaid less: £99 on average, against £175 without it</td><td>Stewart, 2009 (mock bill)</td><td>The numbers on screen can shape the choice</td></tr>
+          <tr><td>People shown a minimum repaid less: £99 on average, against £175 without it</td><td>Stewart, 2009 (mock bill)</td><td>A visible minimum may pull payments down, so its cost has to be visible too</td></tr>
           <tr><td>The US statement warning moved about 0.4 percentage points of accounts to the 36-month amount</td><td>Agarwal and others, 2015</td><td>This warning, on its own, did little</td></tr>
           <tr><td>Removing the minimum from a direct debit setup changed choices, but not total repayments over 7 months</td><td>FCA field trial, 2018</td><td>Measure what people pay, not just what they tap</td></tr>
           <tr><td>Apple Card already estimates interest for the amount you pick</td><td>Apple</td><td>The idea isn't new; the way it's explained has to earn its place</td></tr>
@@ -116,6 +116,9 @@
     </div>
     <h3>Round 2: show it instead</h3>
     <p>I'm replacing those lines with a total payment calculator (sketches 2 and 3). It borrows the bar people know from checking phone storage: your payment, the balance that's left, and the interest added along the way. I'm deciding whether it becomes the amount screen itself.</p>
+
+    <h3>Why the minimum stays</h3>
+    <p>The research could be read as a reason to hide the minimum. I'm keeping it, so people know the least they need to pay right then and there. I'd rather show how paying only the minimum affects the total over time than take the option away. The choice stays with them.</p>
 
     <h3>What changed, and why</h3>
     <div class="table-wrap">
